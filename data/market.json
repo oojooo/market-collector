@@ -2,14 +2,13 @@
  "meta": {
   "brief": "market",
   "date_kst": "2026-11-12",
-  "collected_at_kst": "2026-11-12T17:08:32+09:00",
+  "collected_at_kst": "2026-11-12T17:49:44+09:00",
   "run": "github-actions",
-  "ok_sections": 5,
+  "ok_sections": 6,
   "total_sections": 7,
-  "ok_ratio": 0.71,
+  "ok_ratio": 0.86,
   "errors": [
-   "krx: HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=sqjagD01RI2AAn3Vo6%2Bz9Qo5Wm4WIoEQVBE8JSNpEeXFBrZ4j2%2BLA2DT358iqn",
-   "dart: ConnectTimeout: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Max retries exceeded with url: /api/list.json?crtfc_key=7d5e4d151ef222b42ee139e32dc9164881c04997&corp_code=00126380&bgn_de=20261111&page_count"
+   "krx: HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=***&resultType=json&pageNo=1&numOfRows=6&idxNm=%EC%BD%9"
   ]
  },
  "fred": {
@@ -166,11 +165,43 @@
  },
  "krx": {
   "status": "미확보",
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=sqjagD01RI2AAn3Vo6%2Bz9Qo5Wm4WIoEQVBE8JSNpEeXFBrZ4j2%2BLA2DT358iqnl%2BT1j%2BKOSUrAZ1%2BRtOkIwsnQ%3D%3D&resultType=json&pageNo=1&numOfRows=6&idxNm=%EC%BD%94%EC%8A%A4%E"
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=***&resultType=json&pageNo=1&numOfRows=6&idxNm=%EC%BD%94%EC%8A%A4%ED%94%BC"
  },
  "dart": {
-  "status": "미확보",
-  "error": "ConnectTimeout: HTTPSConnectionPool(host='opendart.fss.or.kr', port=443): Max retries exceeded with url: /api/list.json?crtfc_key=7d5e4d151ef222b42ee139e32dc9164881c04997&corp_code=00126380&bgn_de=20261111&page_count=20 (Caused by ConnectTimeoutError(<HTTPSConnection(host='opendart.fss.or.kr', port=443) at 0x7f7c1b"
+  "status": "ok",
+  "source": "DART(OpenDART)",
+  "bgn_de": "20261111",
+  "disclosures": {
+   "삼성전자": [
+    {
+     "date": "20261112",
+     "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+     "filer": "송기재",
+     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261112000017"
+    },
+    {
+     "date": "20261111",
+     "title": "임원ㆍ주요주주특정증권등소유상황보고서",
+     "filer": "이시영",
+     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111000113"
+    }
+   ],
+   "SK하이닉스": [],
+   "한미반도체": [
+    {
+     "date": "20261111",
+     "title": "기업설명회(IR)개최(안내공시)              ",
+     "filer": "한미반도체",
+     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111800077"
+    },
+    {
+     "date": "20261111",
+     "title": "기업설명회(IR)개최(안내공시)              ",
+     "filer": "한미반도체",
+     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111800075"
+    }
+   ]
+  }
  },
  "te": {
   "status": "ok",
@@ -178,7 +209,7 @@
   "pages": {
    "us30y": {
     "url": "https://tradingeconomics.com/united-states/30-year-bond-yield",
-    "excerpt": "# United States 30 Year Bond YieldQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/30-year-bond-yield#historical)\n- [Stats](https://tradingeconomics.com/united-states/30-year-bond-yield#stats)\n- [Forecast](https://tradingeconomics.com/united-states/30-year-bond-yield#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/30-year-bond-yield#alerts)\n- [Export](https://tradingeconomics.com/united-states/30-year-bond-yield)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nActual\n\n\n5.3360\n\nDaily Change\n\n\n-0.027%\n\nMonthly\n\n\n -0.22%\n\n\nYearly\n\n\n0.63%\n\n\nQ4 Forecast\n\n\n5.2338\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Datepicker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu564.5004.7505.2505.5005.750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.336\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS 30 Year Bond Yield5.3360.627 (0.627%) 1Y\n\nUS 30Y X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nUnited States 30 Year Bond Yield - Summary\n\n## The yield on US 30 Year Bond Yield eased to 5.34% on November 12, 2026, marking a 0.03 percentage points decrease from the previous session. Over the past month, the yield has fallen by 0.22 points, though it remains 0.63 points higher than a year ago, according to over-the-counter interbank yield quotes for this government bond maturity.\n\nUnited States 30 Year Bond Yield - Stats\n\n## Historically, the United States 30 Year Bond Yield reached an all time high of 15.21 in October of 1981. United States 30 Year Bond Yield - data, forecasts, historical chart - was last updated on November 12 of 2026.\n\nUnited States 30 Year Bond Yield - Forecast\n\n### The United States 30 Year Bond Yield is expected to trade at 5.23 percent by the end of this quarter, according to Trading Economics global macro models and analysts expectations. Looking forwa"
+    "excerpt": "# United States 30 Year Bond YieldQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/30-year-bond-yield#historical)\n- [Stats](https://tradingeconomics.com/united-states/30-year-bond-yield#stats)\n- [Forecast](https://tradingeconomics.com/united-states/30-year-bond-yield#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/30-year-bond-yield#alerts)\n- [Export](https://tradingeconomics.com/united-states/30-year-bond-yield)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nActual\n\n\n5.3420\n\nDaily Change\n\n\n -0.02%\n\n\nMonthly\n\n\n -0.22%\n\n\nYearly\n\n\n0.63%\n\n\nQ4 Forecast\n\n\n5.2338\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Datepicker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu564.5004.7505.2505.5005.750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.342\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS 30 Year Bond Yield5.342+0.6330(+0.6330%) 1Y\n\nUS 30Y X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nUnited States 30 Year Bond Yield - Summary\n\n## The yield on US 30 Year Bond Yield eased to 5.34% on November 12, 2026, marking a 0.02 percentage points decrease from the previous session. Over the past month, the yield has fallen by 0.22 points, though it remains 0.63 points higher than a year ago, according to over-the-counter interbank yield quotes for this government bond maturity.\n\nUnited States 30 Year Bond Yield - Stats\n\n## Historically, the United States 30 Year Bond Yield reached an all time high of 15.21 in October of 1981. United States 30 Year Bond Yield - data, forecasts, historical chart - was last updated on November 12 of 2026.\n\nUnited States 30 Year Bond Yield - Forecast\n\n### The United States 30 Year Bond Yield is expected to trade at 5.23 percent by the end of this quarter, according to Trading Economics global macro models and analysts expectations. Looking f"
    },
    "us10y": {
     "url": "https://tradingeconomics.com/united-states/10-year-bond-yield",
@@ -186,7 +217,7 @@
    },
    "gold": {
     "url": "https://tradingeconomics.com/commodity/gold",
-    "excerpt": "# GoldPrice - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/commodity/gold#historical)\n- [Stats](https://tradingeconomics.com/commodity/gold#stats)\n- [Forecast](https://tradingeconomics.com/commodity/gold#forecast)\n- [Alerts](https://tradingeconomics.com/commodity/gold#alerts)\n- [Export](https://tradingeconomics.com/commodity/gold)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/commodity/gold#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/commodity/gold#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/commodity/gold#)\n\nActual\n\n\n3963.12\n\nDaily Change\n\n\n-24.72 -0.62%\n\nMonthly\n\n\n -4.80%\n\n\nYearly\n\n\n -5.01%\n\n\nQ4 Forecast\n\n\n4,127.07\n\nSearch...\n\n[1D](https://tradingeconomics.com/commodity/gold#)\n\n[Chart type Picker](https://tradingeconomics.com/commodity/gold#)\n\n[Datepicker](https://tradingeconomics.com/commodity/gold#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu375040004250450047505000525055005750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n3963.0\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nGold (USD/t.oz)3963.0-207.68(-4.98%) 1Y\n\nGold X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nGold Extends Decline on Hawkish Fed View\n\n## Gold weakened below $4,000 an ounce on Thursday, sliding for the third straight session as a stronger US dollar weighed on the precious metal. The dollar gained support from hotter-than-expected US inflation figures and increasingly hawkish comments from Federal Reserve officials, reinforcing expectations of further interest rate increases. Fed Governor Christopher Waller indicated that a 50-basis-point hike in December may be necessary, while Dallas Fed President Lorie Logan supported at least two additional 25-basis-point increases to address persistent inflationary pressures. Markets are currently pricing in approximately a 91% probability of a rate hike next month, with further increases in January and potentially April also being factored in. Investors are now turning their attention to upcoming US economic releases, including weekly jobless claims, existing home sales and producer inflation data, for further indications of the Fed’s monetary policy outlook.\n\nGold - Stats\n\n## Gold fell to 3,964.92 USD/t.oz on November 12, 2026, down 0.5"
+    "excerpt": "# GoldPrice - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/commodity/gold#historical)\n- [Stats](https://tradingeconomics.com/commodity/gold#stats)\n- [Forecast](https://tradingeconomics.com/commodity/gold#forecast)\n- [Alerts](https://tradingeconomics.com/commodity/gold#alerts)\n- [Export](https://tradingeconomics.com/commodity/gold)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/commodity/gold#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/commodity/gold#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/commodity/gold#)\n\nActual\n\n\n3950.49\n\nDaily Change\n\n\n-37.35 -0.94%\n\nMonthly\n\n\n -5.01%\n\n\nYearly\n\n\n -5.22%\n\n\nQ4 Forecast\n\n\n4,127.07\n\nSearch...\n\n[1D](https://tradingeconomics.com/commodity/gold#)\n\n[Chart type Picker](https://tradingeconomics.com/commodity/gold#)\n\n[Datepicker](https://tradingeconomics.com/commodity/gold#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu375040004250450047505000525055005750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n3950.5\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nGold (USD/t.oz)3950.5-220.2 (-5.28%) 1Y\n\nGold X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nGold Extends Decline on Hawkish Fed View\n\n## Gold weakened below $4,000 an ounce on Thursday, sliding for the third straight session as a stronger US dollar weighed on the precious metal. The dollar gained support from hotter-than-expected US inflation figures and increasingly hawkish comments from Federal Reserve officials, reinforcing expectations of further interest rate increases. Fed Governor Christopher Waller indicated that a 50-basis-point hike in December may be necessary, while Dallas Fed President Lorie Logan supported at least two additional 25-basis-point increases to address persistent inflationary pressures. Markets are currently pricing in approximately a 91% probability of a rate hike next month, with further increases in January and potentially April also being factored in. Investors are now turning their attention to upcoming US economic releases, including weekly jobless claims, existing home sales and producer inflation data, for further indications of the Fed’s monetary policy outlook.\n\nGold - Stats\n\n## Gold fell to 3,956.06 USD/t.oz on November 12, 2026, down 0.8"
    },
    "dxy": {
     "url": "https://tradingeconomics.com/united-states/currency",
@@ -198,7 +229,7 @@
    },
    "usdjpy": {
     "url": "https://tradingeconomics.com/japan/currency",
-    "excerpt": "# Japanese YenQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/japan/currency#historical)\n- [Stats](https://tradingeconomics.com/japan/currency#stats)\n- [Forecast](https://tradingeconomics.com/japan/currency#forecast)\n- [Alerts](https://tradingeconomics.com/japan/currency#alerts)\n- [Export](https://tradingeconomics.com/japan/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/japan/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/japan/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/japan/currency#)\n\nExchange Rate\n\n\n159.731\n\nDaily Change\n\n\n -0.0690\n\n -0.04%\n\n\nMonthly\n\n\n0.88%\n\n\nYearly\n\n\n3.35%\n\n\nQ4 Forecast\n\n\n157.854\n\nSearch...\n\n[1D](https://tradingeconomics.com/japan/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/japan/currency#)\n\n[Datepicker](https://tradingeconomics.com/japan/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu150152154156158160162164166\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n159.73\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nUS Dollar Japanese Yen159.735.17 (+3.35%) 1Y\n\nUSDJPY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nYen Weakens to Over Two-Month Lows\n\n## The Japanese yen traded near the psychologically important 160-per-dollar threshold on Thursday after sliding for two straight sessions and falling to its weakest levels in more than two months, opening the door for possible currency intervention. Japan’s top currency official, Atsushi Mimura, cautioned against overlooking the events of this summer, when Japanese and US authorities jointly intervened in the FX market to bolster the yen. The recent decline was driven by broad dollar strength amid rising expectations of a faster pace of Fed rate hikes, following hot US inflation data and increasingly hawkish comments from Fed officials. Meanwhile, domestic data showed that Japan’s producer prices increased 7.1% in October, exceeding market expectations of 6.5% and accelerating from September’s 6.8% gain. Those figures reinforce expectations of tighter monetary policy from the BOJ, which is also widely expected to raise rates next month and continue its tightening cycle into next year.\n\nJapanese Yen - Stats\n\n## The USD/JPY exchange rate "
+    "excerpt": "# Japanese YenQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/japan/currency#historical)\n- [Stats](https://tradingeconomics.com/japan/currency#stats)\n- [Forecast](https://tradingeconomics.com/japan/currency#forecast)\n- [Alerts](https://tradingeconomics.com/japan/currency#alerts)\n- [Export](https://tradingeconomics.com/japan/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/japan/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/japan/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/japan/currency#)\n\nExchange Rate\n\n\n159.698\n\nDaily Change\n\n\n-0.1020 -0.06%\n\nMonthly\n\n\n0.88%\n\n\nYearly\n\n\n3.34%\n\n\nQ4 Forecast\n\n\n157.854\n\nSearch...\n\n[1D](https://tradingeconomics.com/japan/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/japan/currency#)\n\n[Datepicker](https://tradingeconomics.com/japan/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu150152154156158160162164166\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n159.70\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nUS Dollar Japanese Yen159.70+5.141(+3.33%) 1Y\n\nUSDJPY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nYen Weakens to Over Two-Month Lows\n\n## The Japanese yen traded near the psychologically important 160-per-dollar threshold on Thursday after sliding for two straight sessions and falling to its weakest levels in more than two months, opening the door for possible currency intervention. Japan’s top currency official, Atsushi Mimura, cautioned against overlooking the events of this summer, when Japanese and US authorities jointly intervened in the FX market to bolster the yen. The recent decline was driven by broad dollar strength amid rising expectations of a faster pace of Fed rate hikes, following hot US inflation data and increasingly hawkish comments from Fed officials. Meanwhile, domestic data showed that Japan’s producer prices increased 7.1% in October, exceeding market expectations of 6.5% and accelerating from September’s 6.8% gain. Those figures reinforce expectations of tighter monetary policy from the BOJ, which is also widely expected to raise rates next month and continue its tightening cycle into next year.\n\nJapanese Yen - Stats\n\n## The USD/JPY exchange rate fel"
    },
    "usdbrl": {
     "url": "https://tradingeconomics.com/brazil/currency",
@@ -208,9 +239,9 @@
   "cross_calc_note": "원/엔(100엔당)=USDKRW÷USDJPY×100 · 원/헤알=USDKRW÷USDBRL — 'TE 국가별 페이지 재정환율(역외 호가)'로 표기",
   "cross_calc": {
    "usdkrw": 1336.78,
-   "usdjpy": 159.731,
+   "usdjpy": 159.698,
    "usdbrl": 5.5618,
-   "krw_per_100jpy": 836.9,
+   "krw_per_100jpy": 837.1,
    "krw_per_brl": 240.4
   }
  },
