@@ -1,0 +1,55 @@
+name: collect-daily-data
+
+on:
+  schedule:
+    # KST = UTC+9. GitHub 스케줄은 혼잡 시 수 분~수십 분 밀릴 수 있음.
+    - cron: "30 22 * * *"   # 07:30 KST — 본 실행
+    - cron: "50 22 * * *"   # 07:50 KST — 재시도(본 실행이 성공했으면 자동 스킵)
+  workflow_dispatch: {}      # Actions 탭에서 수동 실행(테스트용)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Collect data
+        env:
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          # 수동 실행은 오늘자 수집본이 있어도 강제 재수집
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+        run: python -m collector.main
+
+      - name: Commit data
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M KST')"
+            git pull --rebase origin ${GITHUB_REF_NAME} || true
+            git push
+          fi
