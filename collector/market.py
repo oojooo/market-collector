@@ -84,7 +84,7 @@ def _datago_items(service: str, op: str, params: dict):
     return items
 
 
-def krx():
+def _krx_datago():
     idx = {}
     for name in ("코스피", "코스닥"):
         items = _datago_items("GetMarketIndexInfoService", "getStockMarketIndex", {"numOfRows": 6, "idxNm": name})
@@ -104,6 +104,51 @@ def krx():
             for i in items[:2]
         ]
     return {"status": "ok", "source": "KRX(공공데이터포털 금융위 시세 — 보통 전 영업일까지)", "index": idx, "stocks": stocks}
+
+
+def _num(v):
+    """'4,012.35' 같은 문자열에서 쉼표를 떼어 낸다(값이 없으면 None)."""
+    return v.replace(",", "") if isinstance(v, str) else v
+
+
+def _naver_rows(kind: str, code: str):
+    """네이버 증권 공개 시세(키 불필요) — 최근 일별 시세 2건을 최신순으로 돌려준다."""
+    js = util.get_json(f"https://m.stock.naver.com/api/{kind}/{code}/price", {"pageSize": 5, "page": 1})
+    rows = js if isinstance(js, list) else (js.get("result") or js.get("prices") or [])
+    out = [
+        {
+            "date": (r.get("localTradedAt") or "")[:10].replace("-", ""),  # 2026-11-12 → 20261112
+            "close": _num(r.get("closePrice")),
+            "chg": _num(r.get("compareToPreviousClosePrice")),
+            "chg_pct": _num(r.get("fluctuationsRatio")),
+            "volume": _num(r.get("accumulatedTradingVolume")),
+        }
+        for r in rows
+        if isinstance(r, dict)
+    ]
+    out = [o for o in out if o["date"] and o["close"]]
+    out.sort(key=lambda x: x["date"], reverse=True)
+    if not out:
+        raise RuntimeError(f"네이버 시세 응답에서 값을 찾지 못함: {kind}/{code}")
+    return out[:2]
+
+
+def _krx_naver():
+    """공공데이터포털이 막혔을 때 쓰는 예비 경로."""
+    idx = {name: _naver_rows("index", code) for name, code in (("코스피", "KOSPI"), ("코스닥", "KOSDAQ"))}
+    stocks = {nm: _naver_rows("stock", code) for code, nm in STOCKS}
+    return {"status": "ok", "source": "네이버 증권 일별 시세(예비 경로 — 장중이면 당일 값은 미확정)", "index": idx, "stocks": stocks}
+
+
+def krx():
+    """1순위 공공데이터포털, 실패하면 네이버 증권으로 대체. 어느 경로를 썼는지는 source에 남긴다."""
+    try:
+        return _krx_datago()
+    except Exception as e:  # noqa: BLE001
+        res = _krx_naver()
+        # 1순위가 왜 실패했는지 기록(키는 가려서)
+        res["datago_error"] = util.scrub(f"{type(e).__name__}: {e}")[:200]
+        return res
 
 
 def dart():
