@@ -3,7 +3,9 @@ import datetime
 import json
 import os
 import pathlib
+import re
 import time
+import urllib.parse
 
 import requests
 
@@ -55,13 +57,37 @@ def firecrawl(url: str, max_chars: int = 4000, _retry: bool = True) -> str:
     return md[:max_chars]
 
 
+# 오류 문구에 섞여 나올 수 있는 API 키의 환경변수 이름 목록
+SECRET_ENVS = ("ECOS_API_KEY", "DART_API_KEY", "DATA_GO_KR_KEY", "FRED_API_KEY", "FIRECRAWL_API_KEY")
+# URL 안에서 키가 들어가는 파라미터 이름(값을 통째로 가림)
+_KEY_PARAM = re.compile(r"(?i)(servicekey|crtfc_key|api_key|apikey|authkey|key|token)=[^&\s'\")]+")
+
+
+def scrub(text: str) -> str:
+    """오류 문구에서 API 키를 지운다 — 저장소가 공개라서 JSON에 키가 남으면 안 됨."""
+    for name in SECRET_ENVS:
+        val = os.environ.get(name)
+        if not val:
+            continue
+        # 키 원문, URL 인코딩된 형태(+ → %2B 등) 두 가지를 모두 가림
+        for form in {val, urllib.parse.quote(val, safe=""), urllib.parse.quote_plus(val)}:
+            text = text.replace(form, "***")
+    # 혹시 남은 '파라미터=값' 형태도 한 번 더 가림
+    text = _KEY_PARAM.sub(lambda m: m.group(1) + "=***", text)
+    # ECOS는 키가 주소 경로(/StatisticSearch/<키>/json/...)에 들어가므로 경로째 가림
+    text = re.sub(r"(ecos\.bok\.or\.kr/api/[A-Za-z]+/)[^/\s]+", r"\1***", text)
+    return text
+
+
 def section(fn, errors: list, name: str):
     """섹션 하나가 실패해도 전체 수집은 계속 — 실패분은 '미확보'로 기록."""
     try:
         return fn()
     except Exception as e:  # noqa: BLE001
-        errors.append(f"{name}: {type(e).__name__}: {str(e)[:200]}")
-        return {"status": "미확보", "error": f"{type(e).__name__}: {str(e)[:300]}"}
+        # 키를 먼저 지운 뒤에 길이를 자른다(순서가 바뀌면 잘린 키 조각이 남을 수 있음)
+        msg = scrub(f"{type(e).__name__}: {e}")
+        errors.append(f"{name}: {msg[:200]}")
+        return {"status": "미확보", "error": msg[:300]}
 
 
 def finalize(brief: str, out: dict, errors: list) -> dict:
