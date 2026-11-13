@@ -1,13 +1,15 @@
 {
  "meta": {
   "brief": "market",
-  "date_kst": "2026-11-12",
-  "collected_at_kst": "2026-11-12T18:05:53+09:00",
+  "date_kst": "2026-11-13",
+  "collected_at_kst": "2026-11-13T12:45:40+09:00",
   "run": "github-actions",
-  "ok_sections": 7,
+  "ok_sections": 6,
   "total_sections": 7,
-  "ok_ratio": 1.0,
-  "errors": []
+  "ok_ratio": 0.86,
+  "errors": [
+   "hankyung: TimeoutError: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://markets.hankyung.com/stock/005930\", waiting until \"load\"\n"
+  ]
  },
  "fred": {
   "status": "ok",
@@ -15,12 +17,12 @@
   "series": {
    "SP500": [
     {
-     "date": "2026-11-10",
-     "value": "7520.93"
+     "date": "2026-11-11",
+     "value": "7619.38"
     },
     {
-     "date": "2026-11-09",
-     "value": "7549.94"
+     "date": "2026-11-10",
+     "value": "7520.93"
     }
    ],
    "NASDAQCOM": [
@@ -35,72 +37,72 @@
    ],
    "DJIA": [
     {
-     "date": "2026-11-11",
-     "value": "52486.49"
+     "date": "2026-11-12",
+     "value": "52297.09"
     },
     {
-     "date": "2026-11-10",
-     "value": "52231.89"
+     "date": "2026-11-11",
+     "value": "52486.49"
     }
    ],
    "DGS2": [
     {
-     "date": "2026-11-09",
-     "value": "4.56"
+     "date": "2026-11-10",
+     "value": "4.73"
     },
     {
-     "date": "2026-11-06",
-     "value": "4.51"
+     "date": "2026-11-09",
+     "value": "4.56"
     }
    ],
    "DGS10": [
     {
-     "date": "2026-11-09",
-     "value": "4.88"
+     "date": "2026-11-10",
+     "value": "4.98"
     },
     {
-     "date": "2026-11-06",
-     "value": "4.86"
+     "date": "2026-11-09",
+     "value": "4.88"
     }
    ],
    "DGS30": [
     {
-     "date": "2026-11-09",
-     "value": "5.26"
+     "date": "2026-11-10",
+     "value": "5.35"
     },
     {
-     "date": "2026-11-06",
+     "date": "2026-11-09",
      "value": "5.26"
     }
    ],
    "DFF": [
     {
-     "date": "2026-11-09",
+     "date": "2026-11-11",
      "value": "3.88"
     },
     {
-     "date": "2026-11-08",
+     "date": "2026-11-10",
      "value": "3.88"
     }
    ],
    "DFII30": [
     {
-     "date": "2026-11-09",
-     "value": "3.08"
+     "date": "2026-11-10",
+     "value": "3.17"
     },
     {
-     "date": "2026-11-06",
-     "value": "3.07"
+     "date": "2026-11-09",
+     "value": "3.08"
     }
    ],
    "T10Y2Y": [
     {
-     "date": "2026-11-10",
-     "value": "0.25"
+     "date": "2026-11-12",
+     "value": "0.24"
     },
     {
-     "date": "2026-11-09",
-     "value": "0.32"
+     "date": "2026-11-10",
+     "value": "0.25"
     }
    ]
   }
@@ -167,33 +169,33 @@
   "index": {
    "코스피": [
     {
+     "date": "20261113",
+     "close": "5328.90",
+     "chg": "-13.83",
+     "chg_pct": "-0.26",
+     "volume": null
+    },
+    {
      "date": "20261112",
      "close": "5342.73",
      "chg": "-32.63",
      "chg_pct": "-0.61",
      "volume": null
-    },
-    {
-     "date": "20261111",
-     "close": "5375.36",
-     "chg": "136.23",
-     "chg_pct": "2.60",
-     "volume": null
     }
    ],
    "코스닥": [
+    {
+     "date": "20261113",
+     "close": "706.38",
+     "chg": "9.85",
+     "chg_pct": "1.41",
+     "volume": null
+    },
     {
      "date": "20261112",
      "close": "696.53",
      "chg": "-8.57",
      "chg_pct": "-1.22",
-     "volume": null
-    },
-    {
-     "date": "20261111",
-     "close": "705.10",
-     "chg": "37.49",
-     "chg_pct": "5.62",
      "volume": null
     }
    ]
@@ -201,59 +203,60 @@
   "stocks": {
    "삼성전자": [
     {
-     "date": "20261112",
-     "close": "207000",
-     "chg": "1000",
-     "chg_pct": "0.49",
-     "volume": 29890169
+     "date": "20261113",
+     "close": "207500",
+     "chg": "-500",
+     "chg_pct": "-0.24",
+     "volume": 11675620
     },
     {
-     "date": "20261111",
-     "close": "208000",
-     "chg": "9100",
-     "chg_pct": "4.58",
-     "volume": 16238236
+     "date": "20261112",
+     "close": "206500",
+     "chg": "500",
+     "chg_pct": "0.24",
+     "volume": 19721557
     }
    ],
    "SK하이닉스": [
     {
-     "date": "20261112",
-     "close": "1249000",
-     "chg": "-28000",
-     "chg_pct": "-2.19",
-     "volume": 6057002
+     "date": "20261113",
+     "close": "1231000",
+     "chg": "-23000",
+     "chg_pct": "-1.83",
+     "volume": 2537394
     },
     {
-     "date": "20261111",
-     "close": "1291000",
-     "chg": "79000",
-     "chg_pct": "6.52",
-     "volume": 3440919
+     "date": "20261112",
+     "close": "1241000",
+     "chg": "-36000",
+     "chg_pct": "-2.82",
+     "volume": 4238276
     }
    ],
    "한미반도체": [
     {
-     "date": "20261112",
-     "close": "179700",
-     "chg": "-4300",
-     "chg_pct": "-2.34",
-     "volume": 1164977
+     "date": "20261113",
+     "close": "181500",
+     "chg": "-400",
+     "chg_pct": "-0.22",
+     "volume": 522757
     },
     {
-     "date": "20261111",
-     "close": "186700",
-     "chg": "13300",
-     "chg_pct": "7.67",
-     "volume": 823659
+     "date": "20261112",
+     "close": "179600",
+     "chg": "-4400",
+     "chg_pct": "-2.39",
+     "volume": 777415
     }
    ]
   },
-  "datago_error": "HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=***&resultType=json&pageNo=1&numOfRows=6&idxNm=%EC%BD%9"
+  "datago_error": "HTTPError: 403 Client Error: Forbidden for url: https://apis.data.go.kr/1160100/service/GetMarketIndexInfoService/getStockMarketIndex?serviceKey=***&resultType=json&pageNo=1&numOfRows=6&idxNm=%EC%BD%9",
+  "stocks_source": "한경 종목페이지 '장마감' 정규장 종가: 없음 / 네이버 값 유지(정규장 종가와 다를 수 있음 — 마감 기사로 대조 필요): 삼성전자, SK하이닉스, 한미반도체"
  },
  "dart": {
   "status": "ok",
   "source": "DART(OpenDART)",
-  "bgn_de": "20261111",
+  "bgn_de": "20261112",
   "disclosures": {
    "삼성전자": [
     {
@@ -261,29 +264,10 @@
      "title": "임원ㆍ주요주주특정증권등소유상황보고서",
      "filer": "송기재",
      "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261112000017"
-    },
-    {
-     "date": "20261111",
-     "title": "임원ㆍ주요주주특정증권등소유상황보고서",
-     "filer": "이시영",
-     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111000113"
     }
    ],
    "SK하이닉스": [],
-   "한미반도체": [
-    {
-     "date": "20261111",
-     "title": "기업설명회(IR)개최(안내공시)              ",
-     "filer": "한미반도체",
-     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111800077"
-    },
-    {
-     "date": "20261111",
-     "title": "기업설명회(IR)개최(안내공시)              ",
-     "filer": "한미반도체",
-     "url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261111800075"
-    }
-   ]
+   "한미반도체": []
   }
  },
  "te": {
@@ -292,7 +276,7 @@
   "pages": {
    "us30y": {
     "url": "https://tradingeconomics.com/united-states/30-year-bond-yield",
-    "excerpt": "# United States 30 Year Bond YieldQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/30-year-bond-yield#historical)\n- [Stats](https://tradingeconomics.com/united-states/30-year-bond-yield#stats)\n- [Forecast](https://tradingeconomics.com/united-states/30-year-bond-yield#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/30-year-bond-yield#alerts)\n- [Export](https://tradingeconomics.com/united-states/30-year-bond-yield)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nActual\n\n\n5.3420\n\nDaily Change\n\n\n -0.02%\n\n\nMonthly\n\n\n -0.22%\n\n\nYearly\n\n\n0.63%\n\n\nQ4 Forecast\n\n\n5.2338\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Datepicker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu564.5004.7505.2505.5005.750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.342\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS 30 Year Bond Yield5.342+0.6330(+0.6330%) 1Y\n\nUS 30Y X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nUnited States 30 Year Bond Yield - Summary\n\n## The yield on US 30 Year Bond Yield eased to 5.34% on November 12, 2026, marking a 0.02 percentage points decrease from the previous session. Over the past month, the yield has fallen by 0.22 points, though it remains 0.63 points higher than a year ago, according to over-the-counter interbank yield quotes for this government bond maturity.\n\nUnited States 30 Year Bond Yield - Stats\n\n## Historically, the United States 30 Year Bond Yield reached an all time high of 15.21 in October of 1981. United States 30 Year Bond Yield - data, forecasts, historical chart - was last updated on November 12 of 2026.\n\nUnited States 30 Year Bond Yield - Forecast\n\n### The United States 30 Year Bond Yield is expected to trade at 5.23 percent by the end of this quarter, according to Trading Economics global macro models and analysts expectations. Looking f"
+    "excerpt": "# United States 30 Year Bond YieldQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/30-year-bond-yield#historical)\n- [Stats](https://tradingeconomics.com/united-states/30-year-bond-yield#stats)\n- [Forecast](https://tradingeconomics.com/united-states/30-year-bond-yield#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/30-year-bond-yield#alerts)\n- [Export](https://tradingeconomics.com/united-states/30-year-bond-yield)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nActual\n\n\n5.4450\n\nDaily Change\n\n\n0.08%\n\n\nMonthly\n\n\n -0.12%\n\n\nYearly\n\n\n0.74%\n\n\nQ4 Forecast\n\n\n5.2338\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\n[Datepicker](https://tradingeconomics.com/united-states/30-year-bond-yield#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu564.5004.7505.2505.5005.750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.445\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS 30 Year Bond Yield5.445+0.7360(+0.7360%) 1Y\n\nUS 30Y X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nUnited States 30 Year Bond Yield - Summary\n\n## The yield on US 30 Year Bond Yield rose to 5.44% on November 12, 2026, marking a 0.07 percentage points increase from the previous session. Over the past month, the yield has fallen by 0.12 points, though it remains 0.73 points higher than a year ago, according to over-the-counter interbank yield quotes for this government bond maturity.\n\nUnited States 30 Year Bond Yield - Stats\n\n## Historically, the United States 30 Year Bond Yield reached an all time high of 15.21 in October of 1981. United States 30 Year Bond Yield - data, forecasts, historical chart - was last updated on November 12 of 2026.\n\nUnited States 30 Year Bond Yield - Forecast\n\n### The United States 30 Year Bond Yield is expected to trade at 5.23 percent by the end of this quarter, according to Trading Economics global macro models and analysts expectations. Looking forw"
    },
    "us10y": {
     "url": "https://tradingeconomics.com/united-states/10-year-bond-yield",
@@ -300,32 +284,32 @@
    },
    "gold": {
     "url": "https://tradingeconomics.com/commodity/gold",
-    "excerpt": "# GoldPrice - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/commodity/gold#historical)\n- [Stats](https://tradingeconomics.com/commodity/gold#stats)\n- [Forecast](https://tradingeconomics.com/commodity/gold#forecast)\n- [Alerts](https://tradingeconomics.com/commodity/gold#alerts)\n- [Export](https://tradingeconomics.com/commodity/gold)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/commodity/gold#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/commodity/gold#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/commodity/gold#)\n\nActual\n\n\n3931.16\n\nDaily Change\n\n\n-56.68 -1.42%\n\nMonthly\n\n\n -5.60%\n\n\nYearly\n\n\n -5.80%\n\n\nQ4 Forecast\n\n\n4,127.07\n\nSearch...\n\n[1D](https://tradingeconomics.com/commodity/gold#)\n\n[Chart type Picker](https://tradingeconomics.com/commodity/gold#)\n\n[Datepicker](https://tradingeconomics.com/commodity/gold#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu375040004250450047505000525055005750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n3931.2\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nGold (USD/t.oz)3931.2-239.5 (-5.74%) 1Y\n\nGold X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nGold Extends Decline on Hawkish Fed View\n\n## Gold weakened below $4,000 an ounce on Thursday, sliding for the third straight session as a stronger US dollar weighed on the precious metal. The dollar gained support from hotter-than-expected US inflation figures and increasingly hawkish comments from Federal Reserve officials, reinforcing expectations of further interest rate increases. Fed Governor Christopher Waller indicated that a 50-basis-point hike in December may be necessary, while Dallas Fed President Lorie Logan supported at least two additional 25-basis-point increases to address persistent inflationary pressures. Markets are currently pricing in approximately a 91% probability of a rate hike next month, with further increases in January and potentially April also being factored in. Investors are now turning their attention to upcoming US economic releases, including weekly jobless claims, existing home sales and producer inflation data, for further indications of the Fed’s monetary policy outlook.\n\nGold - Stats\n\n## Gold fell to 3,928.63 USD/t.oz on November 12, 2026, down 1.4"
+    "excerpt": "# GoldPrice - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/commodity/gold#historical)\n- [Stats](https://tradingeconomics.com/commodity/gold#stats)\n- [Forecast](https://tradingeconomics.com/commodity/gold#forecast)\n- [Alerts](https://tradingeconomics.com/commodity/gold#alerts)\n- [Export](https://tradingeconomics.com/commodity/gold)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/commodity/gold#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/commodity/gold#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/commodity/gold#)\n\nActual\n\n\n3910.22\n\nDaily Change\n\n\n33.79 0.87%\n\nMonthly\n\n\n -4.74%\n\n\nYearly\n\n\n -4.23%\n\n\nQ4 Forecast\n\n\n4,127.07\n\nSearch...\n\n[1D](https://tradingeconomics.com/commodity/gold#)\n\n[Chart type Picker](https://tradingeconomics.com/commodity/gold#)\n\n[Datepicker](https://tradingeconomics.com/commodity/gold#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu375040004250450047505000525055005750\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n3910.0\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nGold (USD/t.oz)3910.0-173.58(-4.25%) 1Y\n\nGold X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nGold Slides as Dollar Strength and Fed Rate Bets Weigh\n\n## Gold prices dropped more than 2.5% to around $3,870 an ounce on Thursday, retreating to levels not seen in months, pressured by a stronger US dollar, expectations of further monetary tightening by the Federal Reserve and rising oil prices. Stronger-than-expected US consumer inflation data for October, released on Tuesday, boosted the dollar to a 19-month high as traders increased bets on further Fed rate hikes. Meanwhile, renewed oil price gains added to inflation concerns after President Donald Trump said the US did not need a deal with Iran and redirected Vice President JD Vance towards domestic priorities, away from negotiations with Tehran. According to CME’s FedWatch Tool, markets are pricing in nearly a 90% chance of a 25-basis-point rate hike in December, while the probability of a larger 50-basis-point increase has risen to around 10%, from zero before the inflation data.\n\nGold - Stats\n\n## Gold rose to 3,911.15 USD/t.oz on November 13, 2026, up 0.90% from the previous day. Over the past month, Gold's price has fallen 4.74"
    },
    "dxy": {
     "url": "https://tradingeconomics.com/united-states/currency",
-    "excerpt": "# United States DollarQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/currency#historical)\n- [Stats](https://tradingeconomics.com/united-states/currency#stats)\n- [Forecast](https://tradingeconomics.com/united-states/currency#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/currency#alerts)\n- [Export](https://tradingeconomics.com/united-states/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/currency#)\n\nExchange Rate\n\n\n102.903\n\nDaily Change\n\n\n-0.0052 -0.01%\n\nMonthly\n\n\n0.74%\n\n\nYearly\n\n\n3.81%\n\n\nQ4 Forecast\n\n\n102.040\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/currency#)\n\n[Datepicker](https://tradingeconomics.com/united-states/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu9596979899100101102103104\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n102.90\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nDollar Index102.903.75 (+3.78%) 1Y\n\nDXY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nDollar Holds Gains on Hawkish Fed Bets\n\n## The US dollar index hovered just below 103 on Thursday after gaining more than 1% over the previous two sessions, reaching its highest level since April 2025 amid growing expectations of further Federal Reserve rate hikes. The rally was supported by October inflation data that came in above market forecasts, alongside increasingly hawkish remarks from Fed policymakers. Fed Governor Christopher Waller cautioned that a 50-basis-point rate increase in December may be necessary, while Dallas Fed President Lorie Logan supported at least two additional 25-basis-point hikes as inflationary pressures continue to build. Markets are now assigning roughly a 91% probability to a rate increase next month, with investors also factoring in the possibility of further tightening in January and potentially April. Attention now shifts to Thursday’s initial jobless claims and existing home sales figures for additional insight into inflation trends, labor market conditions an"
+    "excerpt": "# United States DollarQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/united-states/currency#historical)\n- [Stats](https://tradingeconomics.com/united-states/currency#stats)\n- [Forecast](https://tradingeconomics.com/united-states/currency#forecast)\n- [Alerts](https://tradingeconomics.com/united-states/currency#alerts)\n- [Export](https://tradingeconomics.com/united-states/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/united-states/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/united-states/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/united-states/currency#)\n\nExchange Rate\n\n\n103.179\n\nDaily Change\n\n\n0.0089 0.01%\n\nMonthly\n\n\n0.60%\n\n\nYearly\n\n\n3.90%\n\n\nQ4 Forecast\n\n\n102.040\n\nSearch...\n\n[1D](https://tradingeconomics.com/united-states/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/united-states/currency#)\n\n[Datepicker](https://tradingeconomics.com/united-states/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu969810010210494106\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n103.17\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nDollar Index103.17+3.876(+3.90%) 1Y\n\nDXY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nDollar Holds at 19-Month High\n\n## The US dollar index held above 103 on Friday after gaining for three consecutive sessions and reaching its highest level since April 2025, supported by rising expectations of a more aggressive Federal Reserve tightening cycle. The rally followed stronger-than-expected US consumer inflation data and hawkish comments from Fed officials, with some policymakers indicating that a larger 50-basis-point rate increase could be necessary to bring inflation under control. Markets are currently assigning an approximately 85% probability to a 25-basis-point rate hike in December, while the likelihood of a larger 50-basis-point increase stands at around 15%. Traders are also increasingly factoring in additional rate hikes next year. Investors are now turning their attention to US PPI data for further indications of inflationary trends. Meanwhile, oil prices rebounded as President Donald Trump declared that the US no longer needs a deal with Iran, boosting safe-haven demand for the dol"
    },
    "usdkrw": {
     "url": "https://tradingeconomics.com/south-korea/currency",
-    "excerpt": "# South Korean WonQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/south-korea/currency#historical)\n- [Stats](https://tradingeconomics.com/south-korea/currency#stats)\n- [Forecast](https://tradingeconomics.com/south-korea/currency#forecast)\n- [Alerts](https://tradingeconomics.com/south-korea/currency#alerts)\n- [Export](https://tradingeconomics.com/south-korea/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/south-korea/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/south-korea/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/south-korea/currency#)\n\nExchange Rate\n\n\n1,336.78\n\nDaily Change\n\n\n -5.4900\n\n -0.41%\n\n\nMonthly\n\n\n0.17%\n\n\nYearly\n\n\n -9.02%\n\n\nQ4 Forecast\n\n\n1,356.81\n\nSearch...\n\n[1D](https://tradingeconomics.com/south-korea/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/south-korea/currency#)\n\n[Datepicker](https://tradingeconomics.com/south-korea/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu1300135014001450150015501600\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n1336.8\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS Dollar South Korean Won1336.8-132.6 (-9.02%) 1Y\n\nUSDKRW X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nKorean Won Rises on Equity Inflows and Export Growth\n\n## The South Korean won strengthened to around 1,336 per dollar, reaching its highest level since late October, as robust export growth and easing foreign selling pressure supported the currency. Strong domestic data also lifted sentiment, with exports more than doubling year-on-year in the first 10 days of November, driven by a 331.2% surge in semiconductor shipments, while employment rose by 139,000 in October, marking the fourth consecutive month of job growth. Foreign investors also returned as net buyers of Korean equities in the previous session, providing additional support. Hopes for a US-Iran diplomatic resolution improved risk appetite, while expectations of fewer US military strikes eased concerns over prolonged Middle Eastern oil supply disruptions. However, gains faced headwinds from a stronger dollar as hotter-than-expected US inflation and hawkish Federal Reserve comments reinforced expectations of further rate hikes.\n\nSouth Kor"
+    "excerpt": "# South Korean WonQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/south-korea/currency#historical)\n- [Stats](https://tradingeconomics.com/south-korea/currency#stats)\n- [Forecast](https://tradingeconomics.com/south-korea/currency#forecast)\n- [Alerts](https://tradingeconomics.com/south-korea/currency#alerts)\n- [Export](https://tradingeconomics.com/south-korea/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/south-korea/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/south-korea/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/south-korea/currency#)\n\nExchange Rate\n\n\n1,334.75\n\nDaily Change\n\n\n -4.0800\n\n -0.30%\n\n\nMonthly\n\n\n -0.49%\n\n\nYearly\n\n\n -9.24%\n\n\nQ4 Forecast\n\n\n1,356.81\n\nSearch...\n\n[1D](https://tradingeconomics.com/south-korea/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/south-korea/currency#)\n\n[Datepicker](https://tradingeconomics.com/south-korea/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu1300135014001450150015501600\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n1334.8\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS Dollar South Korean Won1334.8-135.9 (-9.24%) 1Y\n\nUSDKRW X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nKorean Won Rises on Equity Inflows and Export Growth\n\n## The South Korean won strengthened to around 1,330 per dollar, reaching its highest level since late October, as robust export growth and easing foreign selling pressure supported the currency. Strong domestic data lifted sentiment, with exports more than doubling year-on-year in the first 10 days of November, driven by a 331.2% surge in semiconductor shipments, while employment rose by 139,000 in October, marking the fourth consecutive month of job growth. Foreign investors also returned as net buyers of Korean equities in the previous session, providing additional support. Hopes for a US-Iran diplomatic resolution improved risk appetite, while expectations of fewer US military strikes eased concerns over prolonged Middle Eastern oil supply disruptions. However, gains faced headwinds from a stronger dollar as hotter-than-expected US inflation and hawkish Federal Reserve comments reinforced expectations of further rate hikes.\n\nSouth Korean"
    },
    "usdjpy": {
     "url": "https://tradingeconomics.com/japan/currency",
-    "excerpt": "# Japanese YenQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/japan/currency#historical)\n- [Stats](https://tradingeconomics.com/japan/currency#stats)\n- [Forecast](https://tradingeconomics.com/japan/currency#forecast)\n- [Alerts](https://tradingeconomics.com/japan/currency#alerts)\n- [Export](https://tradingeconomics.com/japan/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/japan/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/japan/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/japan/currency#)\n\nExchange Rate\n\n\n159.698\n\nDaily Change\n\n\n-0.1020 -0.06%\n\nMonthly\n\n\n0.88%\n\n\nYearly\n\n\n3.34%\n\n\nQ4 Forecast\n\n\n157.854\n\nSearch...\n\n[1D](https://tradingeconomics.com/japan/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/japan/currency#)\n\n[Datepicker](https://tradingeconomics.com/japan/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu150152154156158160162164166\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n159.70\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nUS Dollar Japanese Yen159.70+5.141(+3.33%) 1Y\n\nUSDJPY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nYen Weakens to Over Two-Month Lows\n\n## The Japanese yen traded near the psychologically important 160-per-dollar threshold on Thursday after sliding for two straight sessions and falling to its weakest levels in more than two months, opening the door for possible currency intervention. Japan’s top currency official, Atsushi Mimura, cautioned against overlooking the events of this summer, when Japanese and US authorities jointly intervened in the FX market to bolster the yen. The recent decline was driven by broad dollar strength amid rising expectations of a faster pace of Fed rate hikes, following hot US inflation data and increasingly hawkish comments from Fed officials. Meanwhile, domestic data showed that Japan’s producer prices increased 7.1% in October, exceeding market expectations of 6.5% and accelerating from September’s 6.8% gain. Those figures reinforce expectations of tighter monetary policy from the BOJ, which is also widely expected to raise rates next month and continue its tightening cycle into next year.\n\nJapanese Yen - Stats\n\n## The USD/JPY exchange rate fel"
+    "excerpt": "# Japanese YenQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/japan/currency#historical)\n- [Stats](https://tradingeconomics.com/japan/currency#stats)\n- [Forecast](https://tradingeconomics.com/japan/currency#forecast)\n- [Alerts](https://tradingeconomics.com/japan/currency#alerts)\n- [Export](https://tradingeconomics.com/japan/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/japan/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/japan/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/japan/currency#)\n\nExchange Rate\n\n\n159.852\n\nDaily Change\n\n\n0.0520 0.03%\n\nMonthly\n\n\n0.96%\n\n\nYearly\n\n\n3.42%\n\n\nQ4 Forecast\n\n\n157.854\n\nSearch...\n\n[1D](https://tradingeconomics.com/japan/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/japan/currency#)\n\n[Datepicker](https://tradingeconomics.com/japan/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu150152154156158160162164166\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n159.85\n\n1D1W1M6M1Y5Y10Y25Y50YAll\n\nUS Dollar Japanese Yen159.85+5.294(+3.43%) 1Y\n\nUSDJPY X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nYen Weakens to Over Two-Month Lows\n\n## The Japanese yen traded near the psychologically important 160-per-dollar threshold on Thursday after sliding for two straight sessions and falling to its weakest levels in more than two months, opening the door for possible currency intervention. Japan’s top currency official, Atsushi Mimura, cautioned against overlooking the events of this summer, when Japanese and US authorities jointly intervened in the FX market to bolster the yen. The recent decline was driven by broad dollar strength amid rising expectations of a faster pace of Fed rate hikes, following hot US inflation data and increasingly hawkish comments from Fed officials. Meanwhile, domestic data showed that Japan’s producer prices increased 7.1% in October, exceeding market expectations of 6.5% and accelerating from September’s 6.8% gain. Those figures reinforce expectations of tighter monetary policy from the BOJ, which is also widely expected to raise rates next month and continue its tightening cycle into next year.\n\nJapanese Yen - Stats\n\n## The USD/JPY exchange rate rose "
    },
    "usdbrl": {
     "url": "https://tradingeconomics.com/brazil/currency",
-    "excerpt": "# Brazilian RealQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/brazil/currency#historical)\n- [Stats](https://tradingeconomics.com/brazil/currency#stats)\n- [Forecast](https://tradingeconomics.com/brazil/currency#forecast)\n- [Alerts](https://tradingeconomics.com/brazil/currency#alerts)\n- [Export](https://tradingeconomics.com/brazil/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/brazil/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/brazil/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/brazil/currency#)\n\nExchange Rate\n\n\n5.56180\n\nDaily Change\n\n\n-0.0216 -0.39%\n\nMonthly\n\n\n11.08%\n\n\nYearly\n\n\n5.39%\n\n\nQ4 Forecast\n\n\n5.48231\n\nSearch...\n\n[1D](https://tradingeconomics.com/brazil/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/brazil/currency#)\n\n[Datepicker](https://tradingeconomics.com/brazil/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu4.8004.90055.1005.2005.3005.4005.5005.6005.700\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.584\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS Dollar Brazilian Real5.584+0.28570(+5.39%) 1Y\n\nUSDBRL X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nBrazilian Real Near Lowest Since June 2025\n\n## The Brazilian real weakened towards 5.6 per USD in November, its lowest since June last year, amid the prospects of lower interest rates by the Central Bank of Brazil. Policymakers in the BCB suggested that the elevated interest rates have already dampened economic activity in its latest meeting minutes, hinting that rate cuts may be necessary to tame slower growth and threats to unemployment. The central bank had held its Selic rate unchanged at 13.75%, pausing five consecutive cuts as high oil prices and widening budget deficits added to pro-inflationary risks. In the meantime, hot inflation data in the US in October consolidated bets of multiple rate hikes by the Fed next year and a 25bps hike to 4.25% next month. A narrower differential between the benchmark rates would pressure the real by reducing carry trade.\n\nBrazilian Real - Stats\n\n## The USD/BRL exchange rate rose to 5.5840 on November 12, 2026, up 0.03% from the previous session. Over the past month, the Brazilian Real has weakened 11.08"
+    "excerpt": "# Brazilian RealQuote - Chart - Historical Data - News\n\n- [Summary](https://tradingeconomics.com/brazil/currency#historical)\n- [Stats](https://tradingeconomics.com/brazil/currency#stats)\n- [Forecast](https://tradingeconomics.com/brazil/currency#forecast)\n- [Alerts](https://tradingeconomics.com/brazil/currency#alerts)\n- [Export](https://tradingeconomics.com/brazil/currency)\n  - [![CSV download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-csv-filled.svg)  Download Data](https://tradingeconomics.com/brazil/currency#)\n  - [![Excel download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/microsoft-excel-filled.svg)  Excel Add-in](https://tradingeconomics.com/brazil/currency#)\n  - [![API download button](https://d3e5kp2e91w0k0.cloudfront.net/images/downloadicons/download-api.svg)  API Access](https://tradingeconomics.com/brazil/currency#)\n\nExchange Rate\n\n\n5.56180\n\nDaily Change\n\n\n-0.0216 -0.39%\n\nMonthly\n\n\n11.06%\n\n\nYearly\n\n\n5.38%\n\n\nQ4 Forecast\n\n\n5.48231\n\nSearch...\n\n[1D](https://tradingeconomics.com/brazil/currency#)\n\n[Chart type Picker](https://tradingeconomics.com/brazil/currency#)\n\n[Datepicker](https://tradingeconomics.com/brazil/currency#)\n\nCompare\n\nExport\n\nAPI\n\nCreated with Highcharts 10.1.0Context Menu4.8004.90055.1005.2005.3005.4005.5005.6005.700\n\nDec2026FebMarAprMayJunJulAugSepOctNov\n\n5.5618\n\n1D1W1M6M1Y5Y10Y25YAll\n\nUS Dollar Brazilian Real5.56180.2635 (+4.97%) 1Y\n\nUSDBRL X\n\nLNR\n\nnull:cur X\n\nLNR\n\nIntraday1 Minute5 Minutes15 Minutes1 HourDays1 Day1 Week1 Month\n\nSubmit\n\nBrazilian Real Near Lowest Since June 2025\n\n## The Brazilian real weakened towards 5.6 per USD in November, its lowest since June last year, amid the prospects of lower interest rates by the Central Bank of Brazil. Policymakers in the BCB suggested that the elevated interest rates have already dampened economic activity in its latest meeting minutes, hinting that rate cuts may be necessary to tame slower growth and threats to unemployment. The central bank had held its Selic rate unchanged at 13.75%, pausing five consecutive cuts as high oil prices and widening budget deficits added to pro-inflationary risks. In the meantime, hot inflation data in the US in October consolidated bets of multiple rate hikes by the Fed next year and a 25bps hike to 4.25% next month. A narrower differential between the benchmark rates would pressure the real by reducing carry trade.\n\nBrazilian Real - Stats\n\n## The USD/BRL exchange rate rose to 5.5833 on November 12, 2026, up 0.02% from the previous session. Over the past month, the Brazilian Real has weakened 11.0"
    }
   },
   "cross_calc_note": "원/엔(100엔당)=USDKRW÷USDJPY×100 · 원/헤알=USDKRW÷USDBRL — 'TE 국가별 페이지 재정환율(역외 호가)'로 표기",
   "cross_calc": {
-   "usdkrw": 1336.78,
-   "usdjpy": 159.698,
+   "usdkrw": 1334.75,
+   "usdjpy": 159.852,
    "usdbrl": 5.5618,
-   "krw_per_100jpy": 837.1,
-   "krw_per_brl": 240.4
+   "krw_per_100jpy": 835.0,
+   "krw_per_brl": 240.0
   }
  },
  "naver_research": {
@@ -371,75 +355,7 @@
   ]
  },
  "hankyung": {
-  "status": "ok",
-  "source": "한경 코리아마켓(Playwright — 로그인 전용 PDF 원문은 미수집)",
-  "consensus_text": "본문 바로가기\n전체메뉴\n통합검색\n신문 구독\n한경 프리미엄9 구독\n로그인\n한경 프리미엄9 구독하기\n한경코리아마켓\n시황·전망\n기업·종목\n펀드·ETF\n채권·선물\n시장지표\nKEDI\n마켓\nMAP\n한경 종목+\n컨센서스\n한경증권\n코리아마켓TV\n주간 목표 상향 TOP10\nTOP\n9\n\n코웨이\n\n021240\n\n작성자\n오린아\n발행기관\nLS증권\n발표일\n2026.11.09\nTOP\n10\n\n네오팜\n\n092730\n\n작성자\n오린아\n발행기관\nLS증권\n발표일\n2026.11.10\nTOP\n1\n기업\n\n파마리서치\n\n214450\n\n작성자\n조은애\n발행기관\nIBK투자증권\n발표일\n2026.11.09\nTOP\n2\n기업\n\n삼성화재\n\n000810\n\n작성자\n김도하\n발행기관\n한화투자증권\n발표일\n2026.11.11\nTOP\n3\n기업\n\n코스맥스\n\n192820\n\n작성자\n한유정\n발행기관\n한화투자증권\n발표일\n2026.11.12\nTOP\n4\n기업\n\n코스맥스\n\n192820\n\n작성자\n이해니\n발행기관\n유진투자증권\n발표일\n2026.11.12\nTOP\n5\n기업\n\n제이브이엠\n\n054950\n\n작성자\n이상헌\n발행기관\niM증권\n발표일\n2026.11.09\nTOP\n6\n기업\n\n펌텍코리아\n\n251970\n\n작성자\n한유정\n발행기관\n한화투자증권\n발표일\n2026.11.10\nTOP\n7\n기업\n\n제주항공\n\n089590\n\n작성자\n박수영\n발행기관\n한화투자증권\n발표일\n2026.11.10\nTOP\n8\n기업\n\n레이언스\n\n228850\n\n작성자\n박종선\n발행기관\n유진투자증권\n발표일\n2026.11.12\nTOP\n9\n기업\n\n코웨이\n\n021240\n\n작성자\n오린아\n발행기관\nLS증권\n발표일\n2026.11.09\nTOP\n10\n기업\n\n네오팜\n\n092730\n\n작성자\n오린아\n발행기관\nLS증권\n발표일\n2026.11.10\nTOP\n1\n\n파마리서치\n\n214450\n\n작성자\n조은애\n발행기관\nIBK투자증권\n발표일\n2026.11.09\nTOP\n2\n\n삼성화재\n\n000810\n\n작성자\n김도하\n발행기관\n한화투자증권\n발표일\n2026.11.11\n이전 슬라이드\n다음 슬라이드\n애널리스트\n최근 3개월\n선유진\n\nLS증권\n\n스코어\n별점 1.5\n평가 정확도\n55%\n정이수\n\nIBK투자증권\n\n스코어\n별점 1.5\n평가 정확도\n60%\n조은애\n\nIBK투자증권\n\n스코어\n별점 1.5\n평가 정확도\n80%\n리포트 조회\n전체\n기업\n산업\n시장\n경제\n파생\n날짜\n최근 7일\n1개월\n6개월\n1년\n1개월\n투자의견\n전체\n강력매수\n매수\n단기매수\n보유\n매도\n투자의견 없음\n전체\n목표주가 상/하향\n전체\n상향\n유지\n하향\n전체\n종목검색\n코드: 종목명\n검색\n전체\n제목\n작성자\n발행기관\n전체\n검색\n50개 단위\n100개 단위\n200개 단위\n50개 단위\n제목\t목표주가\t작성자\t발행기관\t발표일\n\n기업\n메리츠금융지주(138040) 소외되었던 26년보다 27년이 기대되는 회사\n\t149,000\t설용진\tiM증권\t2026.11.12\n\n시장\nstart with ibks\n\t-\t투자분석부\tIBK투자증권\t2026.11.12\n\n시장\nibks morning brief\n\t-\t기간산업분석부・혁신기업분석부\tIBK투자증권\t2026.11.12\n\n산업\n[인터넷/게임] IBKS Daily\n\t-\t이승훈, 박상준\tIBK투자증권\t2026.11.12\n\n기업\n티엘비(356860) 예상보다 훨씬 더 좋다\n\t62,000\t조은애\tIBK투자증권\t2026.11.12\n\n기업\n삼성전기(009150) NDR 후기: 자신감 넘치는 수요 전망\n\t1,900,000\t김운호\tIBK투자증권\t2026.11.12\n\n기업\n코오롱인더(120110) 래깅 효과에 기대치 하회, 화학부문 체력은 확인\n\t73,000\t이동욱\tIBK투자증권\t2026.11.12\n\n산업\n10월 여수신동향: 4분기에도 대출성장률 크게 낮아지지 않을 듯\n\t-\t전배승\tLS증권\t2026.11.12\n\n기업\nNC(036570) 아이온2 글로벌, 신작 기대감 유효\n\t310,000\t선유진\tLS증권\t2026.11.12\n\n기업\n레이언스(228850) 반도체 부품으로 성장성 부각\n\t9,000\t정홍식\tLS증권\t2026.11.12\n\n기업\n바텍(043150) 3Q26 Review: 영업이익 +25.5% YoY\n\t28,000\t정홍식\tLS증권\t2026.11.12\n\n기업\n이마트(139480) 3Q26 Review: 본업은 순항\n\t86,000\t오린아\tLS증권\t2026.11.12\n\n산업\n유가, Fair Value 근접. 그러나 11월말 주의보\n\t-\t홍성기\tLS증권\t2026.11.12\n\n기업\n롯데웰푸드(280360) 이익 개선의 방향은 예상대로\n\t165,000\t손현정, 김고은\t유안타증권\t2026.11.12\n\n기업\n일진전기(103590) 고단가 수주의 결실, 이익 성장 여력은 충분\n\t125,000\t손현정, 김고은\t유안타증권\t2026.11.12\n\n기업\n코스맥스(192820) 비수기는 없다\n\t363,000\t이승은\t유안타증권\t2026.11.12\n\n기업\nNC(036570) 다음은 신작 가시성\n\t340,000\t최지운\t유안타증권\t2026.11.12\n\n기업\n삼성중공업(010140) 수 년째 2차선 정속 주행, 올해 추월을 하려면\n\t31,000\t김용민\t유안타증권\t2026.11.12\n\n기업\n한화오션(042660) (FY25) 높은 산, (FY26) 깊은 골, 적막한 산하\n\t104,000\t김용민\t유안타증권\t2026.11.12\n\n기업\nHD현대중공업(329180) 다재다능 드래프트 1순위, 높은 몸값이 증명\n\t643,000\t김용민\t유안타증권\t2026.11.12\n\n시장\nYUANTA Research | Daily Digital Asset\n\t-\t이환욱\t유안타증권\t2026.11.12\n\n산업\n외국인 카지노 3사 10월 Monthly\n\t-\t이환욱, 한동우\t유안타증권\t2026.11.12\n\n산업\n상선 시장에 드리운 암운, 그 너머의 빛\n\t-\t김용민\t유안타증권\t2026.11.12\n\n산업\n[엔터 2027 전망: 바닥 다지고 반등하는 해]\n\t-\t이환욱\t유안타증권\t2026.11.12\n\n시장\nYUANTA DAILY MARKET VIEW\n\t-\t리서치센터\t유안타증권\t2026.11.12\n\n시장\n이보 전진 위한 일보 후퇴가 남긴 발자국\n\t-\t나승두\tSK증권\t2026.11.12\n\n기업\n대신증권(003540) 3Q26 Review: 쉽지 않은 하반기가 되겠다\n\t30,000\t장영임\tSK증권\t2026.11.12\n\n기업\n실리콘투(257720) 환율에 가려진 외형 성장\n\t38,000\t형권훈\tSK증권\t2026.11.12\n\n기업\n코스맥스(192820) 국내와 해외 실적 모두 고성장\n\t370,000\t형권훈\tSK증권\t2026.11.12\n\n기업\nJYP Ent.(035900) RUN IT, 아직 끝나지 않은 질주\n\t53,000\t박준형\tSK증권\t2026.11.12\n\n시장\n[LG이노텍] NDR 후기: \"주 단위 오더, 변동 없음 & 기판 호황”\n\t-\t박형우, 정영환\tSK증권\t2026.11.12\n\n기업\nNC(036570) 실적은 견조, 주가의 열쇠는 다음 대작\n\t300,000\t남효지\tSK증권\t2026.11.12\n\n기업\n시프트업(462870) 하방은 견고, 상승은 신작에 달렸다\n\t35,000\t남효지\tSK증권\t2026.11.12\n\n산업\nGlobal Carbon Daily\n\t-\t최관순\tSK증권\t2026.11.12\n\n산업\n은행/증권 국고채 PD 담합 과징금 관련 Comment\n\t-\t장영임\tSK증권\t2026.11.12\n\n산업\n10월 여수신 동향 – 조달 포트폴리오 악화는 ing형\n\t-\t장영임\tSK증권\t2026.11.12\n\n시장\nCCL, LTA를 제안하며 줄서는 고객사들\n\t-\t박형우, 정영환\tSK증권\t2026.11.12\n\n산업\n되돌림\n\t-\t한동희\tSK증권\t2026.11.12\n\n시장\nwake up! 아침에 슼\n\t-\tsk증권 리서치센터\tSK증권\t2026.11.12\n\n기업\n에이치피오(357230) 배당은 꾸준히, 이익은 발효 중\n\t-\t서진경,이금민\t한국IR협의회\t2026.11.12\n\n기업\nJYP Ent.(035900) 3Q26 Review: 실적은 안정적\n\t52,000\t이나라\t상상인증권\t2026.11.12\n\n시장\n상상인 Macro Daily\n\t-\t투자전략팀\t상상인증권\t2026.11.12\n\n산업\n2027년 주요국 국방예산 점검과 방산업종 투자전략\n\t-\t채운샘\t한화투자증권\t2026.11.12\n\n기업\n실리콘투(257720) 환율 노이즈에 가려진 외형 성장\n\t46,000\t한유정\t한화투자증권\t2026.11.12\n\n기업\n롯데웰푸드(280360) 1년 내내 서프라이즈\n\t200,000\t한유정\t한화투자증권\t2026.11.12\n\n기업\n삼양식품(003230) 역대 최대 수준의 CAPA\n\t1,800,000\t한유정\t한화투자증권\t2026.11.12\n\n기업\n코스맥스(192820) 의심할 필요 없지\n\t370,000\t한유정\t한화투자증권\t2026.11.12\n\n산업\n메모리기판(패키지+모듈)에서 느껴지는 ABF의 향기 (ft. 판가 인상, LTA)\n\t-\t양승수\t메리츠증권\t2026.11.12\n\n산업\nsupply matters\n\t-\t장재혁\t메리츠증권\t2026.11.12\n\n기업\n코스맥스(192820) 3Q26P Review: 질주하는 국내, 성장 궤도 진입한 해외\n\t390,000\t박신애,김건우\t메리츠증권\t2026.11.12\n처음\n 12345678910 \n다음\n \n끝\n\n코리아마켓 금융 정보는 각 콘텐츠 제공업체로부터 받는 투자 참고사항이며, 오류가 발생하거나 지연될 수 있습니다.\n한경닷컴과 콘텐츠 제공업체는 제공된 정보에 의한 투자 결과에 법적인 책임을 지지 않습니다. 게시된 정보는 무단으로 배포할 수 없습니다.\n\n트레이딩뷰는 트레이더와 투자자를 위한 차트 플랫폼으로 최첨단 차트와 마켓에 관심이 있는 전 세계 사람들이 채팅, 차팅, 트레이딩을 할 수 있는 공간입니다.\n핵심 마켓 리서치 데이터를 다양한 형태로 제공하며, 이코노믹 캘린더에서 중요한 이벤트를 추적하거나 스크리너에서 포트폴리오에 넣을 종목을 검색할 수도 있습니다.\n트레이딩뷰에 오시면 트레이딩에 관한 모든 것을 찾으실 수 있습니다.\n\n한국경제신문\n회사소개 구독신청 고충처리 광고안내 블루애드 대표번호: 02-3604-114\n사업자등록번호: 110-81-07390 통신판매업신고번호: 중구 02559\n한경닷컴\n회사소개 제휴 / 콘텐츠구입 광고안내 사이트맵 고객센터 RSS 이용약관 개인정보처리방침 청소년보호정책(책임자: 이지연)\n서울시 중구 청파로 463 한국경제신문사  대표번호: 02-3277-9900\n사업자등록번호: 104-81-47984 통신판매업신고번호: 중구 00606 인터넷신문등록번호: 서울 아01035 등록(발행)일자: 2009.11.23 발행·편집인: 박수진\n본지는 한국신문윤리위원회의 서약사로서 신문윤리강령을 준수합니다.\n\nCopyright 1999-2026. 한경닷컴 All rights reserved.\n\n상단 바로가기",
-  "consensus_links": [
-   "/consensus/view/653954 | TOP 9 코웨이 021240 작성자 오린아 발행기관 LS증권 발표일 2026.11.09",
-   "/consensus/view/653991 | TOP 10 네오팜 092730 작성자 오린아 발행기관 LS증권 발표일 2026.11.10",
-   "/consensus/view/653917 | TOP 1 기업 파마리서치 214450 작성자 조은애 발행기관 IBK투자증권 발표일 2026.11.09",
-   "/consensus/view/654026 | TOP 2 기업 삼성화재 000810 작성자 김도하 발행기관 한화투자증권 발표일 2026.11.11",
-   "/consensus/view/654083 | TOP 3 기업 코스맥스 192820 작성자 한유정 발행기관 한화투자증권 발표일 2026.11.12",
-   "/consensus/view/654073 | TOP 4 기업 코스맥스 192820 작성자 이해니 발행기관 유진투자증권 발표일 2026.11.12",
-   "/consensus/view/653935 | TOP 5 기업 제이브이엠 054950 작성자 이상헌 발행기관 iM증권 발표일 2026.11.09",
-   "/consensus/view/653976 | TOP 6 기업 펌텍코리아 251970 작성자 한유정 발행기관 한화투자증권 발표일 2026.11.10",
-   "/consensus/view/653975 | TOP 7 기업 제주항공 089590 작성자 박수영 발행기관 한화투자증권 발표일 2026.11.10",
-   "/consensus/view/654074 | TOP 8 기업 레이언스 228850 작성자 박종선 발행기관 유진투자증권 발표일 2026.11.12",
-   "/consensus/view/653954 | TOP 9 기업 코웨이 021240 작성자 오린아 발행기관 LS증권 발표일 2026.11.09",
-   "/consensus/view/653991 | TOP 10 기업 네오팜 092730 작성자 오린아 발행기관 LS증권 발표일 2026.11.10",
-   "/consensus/view/653917 | TOP 1 파마리서치 214450 작성자 조은애 발행기관 IBK투자증권 발표일 2026.11.09",
-   "/consensus/view/654026 | TOP 2 삼성화재 000810 작성자 김도하 발행기관 한화투자증권 발표일 2026.11.11",
-   "/consensus/view/654130 | 메리츠금융지주(138040) 소외되었던 26년보다 27년이 기대되는 회사",
-   "/consensus/view/654129 | start with ibks",
-   "/consensus/view/654128 | ibks morning brief",
-   "/consensus/view/654127 | [인터넷/게임] IBKS Daily",
-   "/consensus/view/654126 | 티엘비(356860) 예상보다 훨씬 더 좋다",
-   "/consensus/view/654125 | 삼성전기(009150) NDR 후기: 자신감 넘치는 수요 전망",
-   "/consensus/view/654124 | 코오롱인더(120110) 래깅 효과에 기대치 하회, 화학부문 체력은 확인",
-   "/consensus/view/654123 | 10월 여수신동향: 4분기에도 대출성장률 크게 낮아지지 않을 듯",
-   "/consensus/view/654122 | NC(036570) 아이온2 글로벌, 신작 기대감 유효",
-   "/consensus/view/654121 | 레이언스(228850) 반도체 부품으로 성장성 부각",
-   "/consensus/view/654120 | 바텍(043150) 3Q26 Review: 영업이익 +25.5% YoY",
-   "/consensus/view/654119 | 이마트(139480) 3Q26 Review: 본업은 순항",
-   "/consensus/view/654118 | 유가, Fair Value 근접. 그러나 11월말 주의보",
-   "/consensus/view/654117 | 롯데웰푸드(280360) 이익 개선의 방향은 예상대로",
-   "/consensus/view/654116 | 일진전기(103590) 고단가 수주의 결실, 이익 성장 여력은 충분",
-   "/consensus/view/654115 | 코스맥스(192820) 비수기는 없다",
-   "/consensus/view/654114 | NC(036570) 다음은 신작 가시성",
-   "/consensus/view/654113 | 삼성중공업(010140) 수 년째 2차선 정속 주행, 올해 추월을 하려면",
-   "/consensus/view/654112 | 한화오션(042660) (FY25) 높은 산, (FY26) 깊은 골, 적막한 산하",
-   "/consensus/view/654111 | HD현대중공업(329180) 다재다능 드래프트 1순위, 높은 몸값이 증명",
-   "/consensus/view/654110 | YUANTA Research | Daily Digital Asset",
-   "/consensus/view/654109 | 외국인 카지노 3사 10월 Monthly",
-   "/consensus/view/654107 | 상선 시장에 드리운 암운, 그 너머의 빛",
-   "/consensus/view/654106 | [엔터 2027 전망: 바닥 다지고 반등하는 해]",
-   "/consensus/view/654105 | YUANTA DAILY MARKET VIEW",
-   "/consensus/view/654104 | 이보 전진 위한 일보 후퇴가 남긴 발자국",
-   "/consensus/view/654103 | 대신증권(003540) 3Q26 Review: 쉽지 않은 하반기가 되겠다",
-   "/consensus/view/654102 | 실리콘투(257720) 환율에 가려진 외형 성장",
-   "/consensus/view/654101 | 코스맥스(192820) 국내와 해외 실적 모두 고성장",
-   "/consensus/view/654100 | JYP Ent.(035900) RUN IT, 아직 끝나지 않은 질주",
-   "/consensus/view/654099 | [LG이노텍] NDR 후기: \"주 단위 오더, 변동 없음 & 기판 호황”",
-   "/consensus/view/654098 | NC(036570) 실적은 견조, 주가의 열쇠는 다음 대작",
-   "/consensus/view/654097 | 시프트업(462870) 하방은 견고, 상승은 신작에 달렸다",
-   "/consensus/view/654096 | Global Carbon Daily",
-   "/consensus/view/654095 | 은행/증권 국고채 PD 담합 과징금 관련 Comment",
-   "/consensus/view/654094 | 10월 여수신 동향 – 조달 포트폴리오 악화는 ing형",
-   "/consensus/view/654093 | CCL, LTA를 제안하며 줄서는 고객사들",
-   "/consensus/view/654092 | 되돌림",
-   "/consensus/view/654091 | wake up! 아침에 슼",
-   "/consensus/view/654090 | 에이치피오(357230) 배당은 꾸준히, 이익은 발효 중",
-   "/consensus/view/654089 | JYP Ent.(035900) 3Q26 Review: 실적은 안정적",
-   "/consensus/view/654088 | 상상인 Macro Daily",
-   "/consensus/view/654087 | 2027년 주요국 국방예산 점검과 방산업종 투자전략",
-   "/consensus/view/654086 | 실리콘투(257720) 환율 노이즈에 가려진 외형 성장",
-   "/consensus/view/654085 | 롯데웰푸드(280360) 1년 내내 서프라이즈",
-   "/consensus/view/654084 | 삼양식품(003230) 역대 최대 수준의 CAPA"
-  ],
-  "stock_pages": {
-   "삼성전자(005930)": "본문 바로가기\n전체메뉴\n통합검색\n신문 구독\n한경 프리미엄9 구독\n로그인\n한경 프리미엄9 구독하기\n한경코리아마켓\n시황·전망\n기업·종목\n펀드·ETF\n채권·선물\n시장지표\nKEDI\n마켓\nMAP\n한경 종목+\n컨센서스\n한경증권\n코리아마켓TV\n 관심종목\n관심종목\n삼성전자\n005930\n코스피\n\n2026.11.12 장마감\n\n208,000\n\n2,000 +0.97%\n\n거래량\n18,871,813\n거래대금(백만)\n3,950,425\n고가\n214,000\n저가\n206,000\n52주 최고\n374,500\n52주 최저\n94,500\n종합\n차트\n컨센서스\n기업·재무\n전자공시\n공매도\n\nTradingView 제공 삼성전자 차트\n\n뉴스\n'젠슨 황 리스크' 직격탄 맞았다…줄줄이 비명 쏟아진 종목\n\n한국경제신문의 투자 전문 유료 플랫폼 '한경 프리미엄9'에 실린 기사입니다. 한경 프리미엄9(www.hankyung.com/premium9)을 구독하시면 더 주식 투자 기사를 찾아볼 수 있습니다.젠슨 황 엔비디아 최고경영자(CEO)의 해임 가능성이 대두되며 글로벌 인공지능(AI) 밸류체인 관련주가 약세로 돌아섰다. 한국과 대만을 중심으로 일본, 중국 등 아시아 증시도 일제히 하락했다. SK하이닉스가 내린 반면 삼성전자는 소폭 상승하는 등 종목 간 희비가 엇갈렸다. ◇ 엔비디아 시간외 급락에 코스피 하락12일 코스피지수는 0.61% 하락한 5342.73에 마감했다. 코스피지수는 장 초반 5458.84로 오르며 5500에 근접했으나 오후 들어 하락으로 전환했다. 뉴욕타임스(NYT)가 젠슨 황과 사내 임원의 두 번째 혼외 관계를 보도한 데 이어 월스트리트저널(WSJ)이 이사회의 젠슨 황 해임 준비 소식을 전하자 엔비디아가 시간 외 거래에서 급락하고 코스피지수도 상승분을 반납했다. 엔비디아는 11일(현지시간) 애프터마켓에서 8.61% 하락해 올 들어 가장 낮은 158.78달러까지 내렸다. 최근 반등에 따른 차익 실현 매물이 나오고 옵션 만기일에 따라 수급이 불안했던 점도 국내 증시 약세 원인으로 꼽혔다. 코스닥지수도 1.22% 내린 696.53에 마감했다.유가증권시장 종목별로 보면 엔비디아 생태계 노출도가 큰 종목의 낙폭이 두드러졌다. 메모리 반도체 기업인 삼성전자와 SK하이닉스의 희비가 엇갈린 것이 대표적이다. SK하이닉스는 1.80% 하락한 125만4000원에, SK스퀘어는 0.63% 내린 79만1000원에 거래를 마쳤다.반면 삼성전자는 0.97% 올라 20만8000원에, 삼성전자우는 2.0% 상승한 16만8300원에 마감했다. SK하이닉스는 엔비디아 공급용 고대역폭메모리(HBM)\n\n2026.11.12 05:53\n\n옵션만기일 맞아 '롤러코스터' 탄 코스피 5340선 마감\n\n국내 증시가 12일 옵션만기일을 맞아 큰 변동성을 나타냈다. 코스피는 장중 5450을 넘었다가, 하락전환해 5300선을 내주기도 했다. 이후 낙폭을 줄여 5300대 중반에서 마감됐다. 코스닥도 1%대 약세였다.12일 코스피는 전일 대비 32.63포인트(0.61%) 내린 5342.73에 거래를 마쳤다. 지수는 5385.94로 출발해 오전 11시33분께 5458.84까지 올랐지만, 오후 2시18분께 5293.05까지 떨어지기도 했다.정규장 마감 무렵까지 유가증권시장에서 기관은 7642억원어치 주식을 순매도했다. 반면 외국인과 개인은 각각 1580억원어치와 618억원어치를 순매수했다. 기타법인과 사모펀드도 각각 5349억원어치와 1929억원어치를 사들였다.시가총액 상위 종목은 엇갈렸다.삼성전자는 전일 대비 2000원(0.97%) 오른 20만8000원에 마감했다. 이날 삼성전자가 온양캠퍼스를 고대역폭메모리(HBM) 패키징 거점으로 육성하며 후공정 투자를 확대",
-   "SK하이닉스(000660)": "본문 바로가기\n전체메뉴\n통합검색\n신문 구독\n한경 프리미엄9 구독\n로그인\n한경 프리미엄9 구독하기\n한경코리아마켓\n시황·전망\n기업·종목\n펀드·ETF\n채권·선물\n시장지표\nKEDI\n마켓\nMAP\n한경 종목+\n컨센서스\n한경증권\n코리아마켓TV\n 관심종목\n관심종목\nSK하이닉스\n000660\n코스피\n\n2026.11.12 장마감\n\n1,254,000\n\n23,000 -1.80%\n\n거래량\n4,034,432\n거래대금(백만)\n5,125,344\n고가\n1,310,000\n저가\n1,245,000\n52주 최고\n2,987,000\n52주 최저\n501,000\n종합\n차트\n컨센서스\n기업·재무\n전자공시\n공매도\n\nTradingView 제공 SK하이닉스 차트\n\n뉴스\n'젠슨 황 리스크' 직격탄 맞았다…줄줄이 비명 쏟아진 종목\n\n한국경제신문의 투자 전문 유료 플랫폼 '한경 프리미엄9'에 실린 기사입니다. 한경 프리미엄9(www.hankyung.com/premium9)을 구독하시면 더 주식 투자 기사를 찾아볼 수 있습니다.젠슨 황 엔비디아 최고경영자(CEO)의 해임 가능성이 대두되며 글로벌 인공지능(AI) 밸류체인 관련주가 약세로 돌아섰다. 한국과 대만을 중심으로 일본, 중국 등 아시아 증시도 일제히 하락했다. SK하이닉스가 내린 반면 삼성전자는 소폭 상승하는 등 종목 간 희비가 엇갈렸다. ◇ 엔비디아 시간외 급락에 코스피 하락12일 코스피지수는 0.61% 하락한 5342.73에 마감했다. 코스피지수는 장 초반 5458.84로 오르며 5500에 근접했으나 오후 들어 하락으로 전환했다. 뉴욕타임스(NYT)가 젠슨 황과 사내 임원의 두 번째 혼외 관계를 보도한 데 이어 월스트리트저널(WSJ)이 이사회의 젠슨 황 해임 준비 소식을 전하자 엔비디아가 시간 외 거래에서 급락하고 코스피지수도 상승분을 반납했다. 엔비디아는 11일(현지시간) 애프터마켓에서 8.61% 하락해 올 들어 가장 낮은 158.78달러까지 내렸다. 최근 반등에 따른 차익 실현 매물이 나오고 옵션 만기일에 따라 수급이 불안했던 점도 국내 증시 약세 원인으로 꼽혔다. 코스닥지수도 1.22% 내린 696.53에 마감했다.유가증권시장 종목별로 보면 엔비디아 생태계 노출도가 큰 종목의 낙폭이 두드러졌다. 메모리 반도체 기업인 삼성전자와 SK하이닉스의 희비가 엇갈린 것이 대표적이다. SK하이닉스는 1.80% 하락한 125만4000원에, SK스퀘어는 0.63% 내린 79만1000원에 거래를 마쳤다.반면 삼성전자는 0.97% 올라 20만8000원에, 삼성전자우는 2.0% 상승한 16만8300원에 마감했다. SK하이닉스는 엔비디아 공급용 고대역폭메모리(HBM)\n\n2026.11.12 05:53\n\n옵션만기일 맞아 '롤러코스터' 탄 코스피 5340선 마감\n\n국내 증시가 12일 옵션만기일을 맞아 큰 변동성을 나타냈다. 코스피는 장중 5450을 넘었다가, 하락전환해 5300선을 내주기도 했다. 이후 낙폭을 줄여 5300대 중반에서 마감됐다. 코스닥도 1%대 약세였다.12일 코스피는 전일 대비 32.63포인트(0.61%) 내린 5342.73에 거래를 마쳤다. 지수는 5385.94로 출발해 오전 11시33분께 5458.84까지 올랐지만, 오후 2시18분께 5293.05까지 떨어지기도 했다.정규장 마감 무렵까지 유가증권시장에서 기관은 7642억원어치 주식을 순매도했다. 반면 외국인과 개인은 각각 1580억원어치와 618억원어치를 순매수했다. 기타법인과 사모펀드도 각각 5349억원어치와 1929억원어치를 사들였다.시가총액 상위 종목은 엇갈렸다.삼성전자는 전일 대비 2000원(0.97%) 오른 20만8000원에 마감했다. 이날 삼성전자가 온양캠퍼스를 고대역폭메모리(HBM) 패키징 거점으로 육성",
-   "한미반도체(042700)": "본문 바로가기\n전체메뉴\n통합검색\n신문 구독\n한경 프리미엄9 구독\n로그인\n한경 프리미엄9 구독하기\n한경코리아마켓\n시황·전망\n기업·종목\n펀드·ETF\n채권·선물\n시장지표\nKEDI\n마켓\nMAP\n한경 종목+\n컨센서스\n한경증권\n코리아마켓TV\n 관심종목\n관심종목\n한미반도체\n042700\n코스피\n\n2026.11.12 장마감\n\n181,900\n\n2,100 -1.14%\n\n거래량\n759,736\n거래대금(백만)\n137,958\n고가\n186,300\n저가\n177,700\n52주 최고\n426,000\n52주 최저\n113,400\n종합\n차트\n컨센서스\n기업·재무\n전자공시\n공매도\n\nTradingView 제공 한미반도체 차트\n\n뉴스\n젠슨 황 해임 위기에 K반도체도 긴장…삼전닉스에 악재일까\n\n젠슨 황 엔비디아 최고경영자(CEO)의 해임 가능성이 불거지면서 국내 반도체 업계에 긴장감이 커지고 있다. 미국 정부와 의회가 중국에 대한 첨단 반도체 수출통제를 강화할 움직임까지 보이면서 삼성전자와 SK하이닉스에 미칠 파장에 관심이 쏠리고 있다. 단기적으로는 엔비디아에 고대역폭메모리(HBM)를 공급하는 국내 기업들의 주가 변동성이 커질 수 있다. 중장기적으로는 엔비디아 중심의 인공지능(AI) 반도체 시장이 재편되면서 국내 반도체 기업들의 사업 전략에도 변화가 불가피할 것이란 전망이 나온다.12일 금융투자업계에 따르면 엔비디아 주가는 11일(현지시간) 뉴욕증시 정규장에서 2.87% 오른 173.73달러에 마감했으나 장 마감 후 시간외거래에서 8~9% 급락했다. 월스트리트저널(WSJ)이 엔비디아 이사회가 황 CEO의 해임을 준비하고 있다고 보도한 영향이다. 이사회는 후임 CEO를 물색하는 한편 임시 경영체제도 검토하고 있는 것으로 전해졌다. 다만 12일 오전 현재 황 CEO의 해임이 공식 확정된 것은 아니다.황 CEO의 사생활 논란이 중국으로의 첨단 반도체 불법 반출 의혹과 연결되면서 사태가 확산하고 있다. 미국 정보당국이 중국 정보기관과 연계된 것으로 의심하는 싱가포르 기업 관계자와 황 CEO가 혼외관계를 맺은 사실이 드러나면서다. 미 당국은 엔비디아 반도체가 싱가포르 기업 메가스피드를 거쳐 중국에 불법 반출됐는지 조사하고 있다.  ◇ 엔비디아 흔들리자 HBM 공급망도 긴장국내 증시에서 가장 직접적인 영향권에 있는 기업은 SK하이닉스와 삼성전자다. 두 회사 모두 엔비디아의 AI 가속기에 들어가는 HBM을 공급하거나 공급을 확대하고 있다. 특히 SK하이닉스는 엔비디아 핵심 공급사로\n\n2026.11.12 10:54\n\n연금 고수들, 美 지수 대신 코스피200·반도체 담았다\n\n올해 퇴직연금 수익률 상위 10%에 든 ‘고수’ 투자자는 미국 대표지수보다 국내 대표지수와 반도체 상장지수펀드(ETF)를 더 많이 들고 있는 것으로 나타났다. 가장 많이 보유한 ETF는 코스피200지수를 추종하는 TIGER 200이었고, 보유 상위 10개 중 4개가 반도체 관련 상품으로 집계됐다.1일 미래에셋증권에 따르면 이 증권사의 확정기여(DC)형·개인형퇴직연금(IRP) 계좌 중 올해 들어 지난달 23일까지 수익률 상위 10%인 계좌가 가장 많이 보유한 ETF 1~3위는 TIGER 200, RISE 삼성전자SK하이닉스채권혼합50, TIGER 미국필라델피아반도체나스닥이었다.주목할 만한 점은 국내 대표지수 ETF가 미국 대표지수 ETF를 앞섰다는 것이다. TIGER 200이 1위에 오른 데 이어 같은 지수를 따르는 KODEX 200이 4위를 차지했다. 미국 대표지수를 추종하는 TIGER 미국S&P500과 TIGER 미국나스닥100은 각각 5위와 6위에 그쳤다.반도체를 담은 ETF는 상위 10개 중 4개를 차지했다. 2위 RISE 삼성전자SK하이닉스채권혼합5"
-  }
+  "status": "미확보",
+  "error": "TimeoutError: Page.goto: Timeout 45000ms exceeded.\nCall log:\n  - navigating to \"https://markets.hankyung.com/stock/005930\", waiting until \"load\"\n"
  }
 }
