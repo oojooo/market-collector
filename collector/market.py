@@ -257,6 +257,59 @@ def hankyung():
     return {"status": "ok", "source": "한경 코리아마켓(Playwright — 로그인 전용 PDF 원문은 미수집)", **out}
 
 
+# 한경 종목페이지 본문에서 "2026.11.12 장마감 / 1,254,000 / 23,000 -1.80%" 부분을 찾는 패턴
+_HK_CLOSE = re.compile(r"(\d{4})\.(\d{2})\.(\d{2})\s*장마감\s+([\d,]+)\s+([\d,]+)\s+([+-]?\d+(?:\.\d+)?)%")
+_HK_VOLUME = re.compile(r"거래량\s+([\d,]+)")
+
+
+def _parse_hk_close(text: str):
+    """한경 종목페이지 글에서 정규장 종가를 뽑는다. 못 찾으면 None."""
+    m = _HK_CLOSE.search(text or "")
+    if not m:
+        return None
+    y, mo, d, close, chg_abs, pct = m.groups()
+    close = int(close.replace(",", ""))
+    chg_abs = int(chg_abs.replace(",", ""))
+    pct_f = float(pct)
+    chg = -chg_abs if pct_f < 0 else chg_abs  # 한경은 등락폭을 부호 없이 적으므로 등락률 부호를 따른다
+    vol = _HK_VOLUME.search(text)
+    return {
+        "date": f"{y}{mo}{d}",
+        "close": str(close),
+        "chg": str(chg),
+        "chg_pct": f"{pct_f:.2f}",
+        "volume": int(vol.group(1).replace(",", "")) if vol else None,
+        "prev_close": str(close - chg),  # 전 영업일 정규장 종가(역산)
+    }
+
+
+def _fix_stock_closes(out: dict) -> None:
+    """예비 경로(네이버)의 종목 종가는 정규장 이후 거래가 섞여 KRX 종가와 다르다(2026-11-13 확인).
+    그래서 관심 3사 종가는 한경 종목페이지의 '장마감' 값으로 바꿔 넣는다. 지수는 네이버 값이 정확하므로 그대로 둔다."""
+    krx_sec, hk = out.get("krx"), out.get("hankyung")
+    if not isinstance(krx_sec, dict) or krx_sec.get("status") != "ok":
+        return
+    if "네이버" not in krx_sec.get("source", ""):
+        return  # 공공데이터포털 값이면 이미 정규장 종가
+    pages = hk.get("stock_pages", {}) if isinstance(hk, dict) and hk.get("status") == "ok" else {}
+    fixed, missed = [], []
+    for code, nm in STOCKS:
+        row = _parse_hk_close(pages.get(f"{nm}({code})", ""))
+        if not row:
+            missed.append(nm)
+            continue
+        naver_rows = krx_sec.get("stocks", {}).get(nm, [])
+        # 전 영업일 날짜는 네이버 일별 시세에서 가져온다(날짜는 정확함)
+        prev_dates = [r.get("date") for r in naver_rows if r.get("date") and r.get("date") < row["date"]]
+        prev = {"date": max(prev_dates) if prev_dates else None, "close": row.pop("prev_close")}
+        krx_sec["stocks"][nm] = [row, prev]
+        fixed.append(nm)
+    krx_sec["stocks_source"] = (
+        "한경 종목페이지 '장마감' 정규장 종가: " + (", ".join(fixed) or "없음")
+        + (" / 네이버 값 유지(정규장 종가와 다를 수 있음 — 마감 기사로 대조 필요): " + ", ".join(missed) if missed else "")
+    )
+
+
 def collect():
     errors = []
     out = {
@@ -268,4 +321,5 @@ def collect():
         "naver_research": util.section(naver_research, errors, "naver_research"),
         "hankyung": util.section(hankyung, errors, "hankyung"),
     }
+    _fix_stock_closes(out)
     return util.finalize("market", out, errors)
