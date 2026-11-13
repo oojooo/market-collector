@@ -207,23 +207,70 @@ def te():
     }
 
 
+# 네이버 리서치 목록의 한 줄: "- [업종**제목** TODAY증권사2026.11.13.조회 123](상세 주소)"
+_NV_ITEM = re.compile(r"\[([^\]\n]*?)\*\*(.+?)\*\*([^\]\n]*?)\]\((https://m\.stock\.naver\.com/investment/research/\w+/\d+)\)")
+
+# 분야별로 상세를 몇 건 읽을지, 어떤 제목을 먼저 고를지(prefer), 어떤 제목은 빼는지(skip)
+_NV_PICK = {
+    "daily": {
+        "n": 2,
+        "prefer": r"Market Digest|Morning Brief|마켓레이더|Market Time|Daily Snapshot|마감 시황|모닝|신한생각",
+        "skip": r"Carbon|Defense|Japan|China|Weekly|위클리|Platform|ESG|H/W",
+    },
+    "invest": {
+        "n": 2,
+        "prefer": r"시황|전략|코스피|KOSPI|Market Comment|외국인|수급|\d+/\d+,",
+        "skip": r"ESG|달러|QWER|스크리닝",
+    },
+    "industry": {
+        "n": 3,
+        "prefer": r"반도체|메모리|HBM|DRAM|NAND|파운드리|엔비디아|기판|MLCC|PCB|장비|전기전자|IT",
+        "skip": r"$^",  # 빼는 제목 없음
+    },
+    "economy": {
+        "n": 1,
+        "prefer": r"CPI|PPI|FOMC|연준|금리|물가|고용|수출|Morning Letter",
+        "skip": r"Weekly|Check",
+    },
+}
+
+
+def _naver_items(md: str):
+    """목록 글에서 (업종, 제목, 뒷부분, 주소)를 순서대로 뽑는다."""
+    out, seen = [], set()
+    for sector, title, tail, url in _NV_ITEM.findall(md):
+        if url in seen:
+            continue
+        seen.add(url)
+        out.append({"sector": sector.strip(), "title": title.replace("\\", "").strip(), "tail": tail.strip(), "url": url})
+    return out
+
+
+def _pick_details(lists: dict):
+    """분야별로 읽을 리포트를 고른다 — 선호 제목 먼저, 모자라면 목록 위에서부터 채움.
+    (2026-11-13: 데일리 목록 위 6건만 읽어 반도체 산업 리포트가 빠졌던 문제 수정)"""
+    picks = []
+    for cat, rule in _NV_PICK.items():
+        items = [i for i in _naver_items(lists.get(cat, "")) if not re.search(rule["skip"], i["title"])]
+        first = [i for i in items if re.search(rule["prefer"], i["sector"] + " " + i["title"])]
+        rest = [i for i in items if i not in first]
+        for i in (first + rest)[: rule["n"]]:
+            picks.append({**i, "category": cat})
+    return picks
+
+
 def naver_research():
     lists = {}
-    links = []
     for k, u in NAVER_LISTS.items():
-        md = util.firecrawl(u, 6500)
-        lists[k] = md
-        for m in re.finditer(r"https://m\.stock\.naver\.com/investment/research/\w+/\d+", md):
-            if m.group(0) not in links:
-                links.append(m.group(0))
+        lists[k] = util.firecrawl(u, 6500)
     details = []
-    for link in links[:6]:  # 목록 상단 6건의 요약 본문 + PDF URL
-        md = util.firecrawl(link, 6000)
+    for it in _pick_details(lists):  # 데일리 2 · 투자전략 2 · 산업(반도체 우선) 3 · 경제 1 = 최대 8건
+        md = util.firecrawl(it["url"], 6000)
         pdf = None
         m = re.search(r"https%3A%2F%2Fstock\.pstatic\.net[^)\"&\s]+?\.pdf", md)
         if m:
             pdf = unquote(m.group(0))
-        details.append({"url": link, "pdf": pdf, "excerpt": md})
+        details.append({"category": it["category"], "sector": it["sector"], "title": it["title"], "url": it["url"], "pdf": pdf, "excerpt": md})
     return {
         "status": "ok",
         "source": "네이버페이 증권 리서치(Firecrawl) — 목록 날짜가 전일이면 캐시 구식으로 간주",
