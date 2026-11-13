@@ -233,28 +233,48 @@ def naver_research():
 
 
 def hankyung():
-    """한경 코리아마켓 — 로그인 불필요 영역(컨센서스 목록·종목페이지)만 Playwright로 수집."""
+    """한경 코리아마켓 — 로그인 불필요 영역(컨센서스 목록·종목페이지)만 Playwright로 수집.
+    페이지 하나가 늦어도 나머지는 살리도록 페이지마다 따로 시도한다(2026-11-13: 종목페이지 1곳 시간 초과로 전체가 빠진 사례)."""
     from playwright.sync_api import sync_playwright
 
-    out = {}
+    out, page_errors = {}, []
+
+    def open_page(page, url, wait_ms):
+        """페이지를 연다. 실패하면 한 번만 다시 시도. 성공 여부를 돌려준다."""
+        for attempt in (1, 2):
+            try:
+                # 'domcontentloaded' = 글자가 뜨면 바로 진행(광고·차트가 다 뜰 때까지 기다리지 않음)
+                page.goto(url, timeout=40000, wait_until="domcontentloaded")
+                page.wait_for_timeout(wait_ms)
+                return True
+            except Exception as e:  # noqa: BLE001
+                if attempt == 2:
+                    page_errors.append(f"{url}: {type(e).__name__}")
+        return False
+
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page(locale="ko-KR")
-        page.goto("https://markets.hankyung.com/consensus", timeout=45000)
-        page.wait_for_timeout(4000)
-        out["consensus_text"] = page.evaluate("document.body.innerText")[:9000]
-        out["consensus_links"] = page.evaluate(
-            "Array.from(document.querySelectorAll('a[href*=\"consensus/view\"]'))"
-            ".slice(0,60).map(a=>a.getAttribute('href')+' | '+a.textContent.trim().replace(/\\s+/g,' ').slice(0,90))"
-        )
+        if open_page(page, "https://markets.hankyung.com/consensus", 4000):
+            out["consensus_text"] = page.evaluate("document.body.innerText")[:9000]
+            out["consensus_links"] = page.evaluate(
+                "Array.from(document.querySelectorAll('a[href*=\"consensus/view\"]'))"
+                ".slice(0,60).map(a=>a.getAttribute('href')+' | '+a.textContent.trim().replace(/\\s+/g,' ').slice(0,90))"
+            )
         stock_pages = {}
         for code, nm in STOCKS:
-            page.goto(f"https://markets.hankyung.com/stock/{code}", timeout=45000)
-            page.wait_for_timeout(3000)
-            stock_pages[f"{nm}({code})"] = page.evaluate("document.body.innerText")[:1800]
+            if open_page(page, f"https://markets.hankyung.com/stock/{code}", 3000):
+                stock_pages[f"{nm}({code})"] = page.evaluate("document.body.innerText")[:1800]
         out["stock_pages"] = stock_pages
         browser.close()
-    return {"status": "ok", "source": "한경 코리아마켓(Playwright — 로그인 전용 PDF 원문은 미수집)", **out}
+    if "consensus_text" not in out and not stock_pages:
+        raise RuntimeError("한경 페이지를 하나도 열지 못함: " + "; ".join(page_errors))
+    return {
+        "status": "ok",
+        "source": "한경 코리아마켓(Playwright — 로그인 전용 PDF 원문은 미수집)",
+        "page_errors": page_errors,  # 일부만 실패한 경우 여기에 기록
+        **out,
+    }
 
 
 # 한경 종목페이지 본문에서 "2026.11.12 장마감 / 1,254,000 / 23,000 -1.80%" 부분을 찾는 패턴
