@@ -14,6 +14,10 @@ on:
         description: "Firecrawl 예비 경로 끄기(크레딧을 쓰지 않음)"
         type: boolean
         default: false
+      probe_url:
+        description: "이 주소 하나만 Firecrawl로 읽어 로그에 표시(1크레딧, 저장 없음)"
+        type: string
+        default: ""
       dry_run:
         description: "저장·커밋 없이 점검만(페이지별 수집 경로를 로그에 표시)"
         type: boolean
@@ -53,6 +57,7 @@ jobs:
           FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
           NO_FIRECRAWL: ${{ inputs.no_firecrawl && '1' || '0' }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          PROBE_URL: ${{ inputs.probe_url }}
         run: python -m collector.main
 
       - name: Commit data
