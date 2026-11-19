@@ -22,13 +22,10 @@ PAGE_OK = {
 
 
 def pages():
-    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감)."""
-    out = {}
-    with util.browser() as page:
-        for k, u in PAGES.items():
-            md, via = util.fetch_md(page, u, 5000, lambda md, k=k: util.link_count(md, PAGE_OK[k]) >= 8)
-            out[k] = {"url": u, "via": via, "excerpt": md}
-    return {"status": "ok", "source": "한경·중앙 섹션 목록(수집 경로는 페이지별 via)", "pages": out}
+    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감).
+    한 곳이 안 열려도 나머지는 싣는다(안 열린 곳은 excerpt가 비고 page_errors에 사유가 남는다)."""
+    res = util.fetch_pages(PAGES, PAGE_OK)
+    return {"status": "ok", "source": "한경·중앙 섹션 목록(수집 경로는 페이지별 via)", **res}
 
 
 def collect():

@@ -10,7 +10,8 @@ from . import util
 
 PAGES = {
     "tokenpost_briefing": "https://www.tokenpost.kr/news/briefing",
-    "tokenpost_latest": "https://www.tokenpost.kr/news/latest",
+    # /news/latest 는 없는 주소(404)였음 — 2026-11-19 점검에서 확인, 전체 뉴스 목록으로 교체. 키 이름은 그대로 둔다.
+    "tokenpost_latest": "https://www.tokenpost.kr/news",
     "fsc_press": "https://www.fsc.go.kr/no010101",
 }
 
@@ -24,13 +25,10 @@ PAGE_OK = {
 
 
 def pages():
-    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감)."""
-    out = {}
-    with util.browser() as page:
-        for k, u in PAGES.items():
-            md, via = util.fetch_md(page, u, 5000, lambda md, k=k: util.link_count(md, PAGE_OK[k]) >= 8)
-            out[k] = {"url": u, "via": via, "excerpt": md}
-    return {"status": "ok", "source": "토큰포스트 목록·금융위 보도자료 목록(수집 경로는 페이지별 via)", "pages": out}
+    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감).
+    한 곳이 안 열려도 나머지는 싣는다(안 열린 곳은 excerpt가 비고 page_errors에 사유가 남는다)."""
+    res = util.fetch_pages(PAGES, PAGE_OK)
+    return {"status": "ok", "source": "토큰포스트 목록·금융위 보도자료 목록(수집 경로는 페이지별 via)", **res}
 
 
 def collect():

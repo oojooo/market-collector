@@ -108,7 +108,7 @@ _MD_JS = r"""
 """
 
 # 접속 차단·확인 화면에 나오는 문구 — 이런 화면이면 읽은 것으로 치지 않는다
-_BLOCK_MARKS = ("Just a moment", "Verify you are human", "Access Denied", "Attention Required", "Request blocked")
+_BLOCK_MARKS = ("Just a moment", "Verify you are human", "Access Denied", "Access denied", "Attention Required", "Request blocked")
 _ROOTS = ["main", "[role=main]", "#container", "#content", "body"]
 
 
@@ -238,3 +238,22 @@ def save(name: str, payload: dict) -> pathlib.Path:
     p = DATA_DIR / name
     p.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     return p
+
+
+def fetch_pages(pages: dict, ok_pattern: dict, max_chars: int = 5000, min_links: int = 8) -> dict:
+    """목록 페이지 여러 곳을 읽는다. 한 곳이 안 열려도 나머지는 살리고, 전부 실패했을 때만 오류를 낸다.
+    ok_pattern[이름] = 그 페이지의 기사 주소 형식 — 이런 링크가 min_links개 이상 보여야 제대로 읽은 것으로 본다."""
+    out, failed = {}, []
+    with browser() as page:
+        for k, u in pages.items():
+            try:
+                md, via = fetch_md(page, u, max_chars, lambda md, k=k: link_count(md, ok_pattern[k]) >= min_links)
+                out[k] = {"url": u, "via": via, "excerpt": md}
+            except Exception as e:  # noqa: BLE001
+                msg = scrub(f"{type(e).__name__}: {e}")[:200]
+                failed.append(f"{k}: {msg}")
+                out[k] = {"url": u, "via": None, "excerpt": "", "error": msg}
+    if len(failed) == len(pages):
+        raise RuntimeError("목록 페이지를 하나도 읽지 못함 — " + " / ".join(failed)[:260])
+    return {"pages": out, "page_errors": failed}
+

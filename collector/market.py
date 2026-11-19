@@ -230,6 +230,10 @@ def te():
             md, via = util.fetch_md(page, u, 9000, _te_ok(k), wait_ms=3000)
             pages[k] = {"url": u, "via": via, "excerpt": _te_excerpt(md)}
             rate[k] = _te_first_rate(md)  # 줄이기 전 글에서 읽는다
+            if via != "playwright":
+                # TE는 GitHub 서버의 브라우저 접속을 403으로 막는다(2026-11-19 점검). 첫 페이지가 막히면
+                # 나머지는 브라우저를 다시 시도하지 않고 바로 Firecrawl로 읽는다(막힘이 풀리면 자동으로 브라우저 경로).
+                page = None
 
     krw, jpy, brl = rate["usdkrw"], rate["usdjpy"], rate["usdbrl"]
     cross = {"usdkrw": krw, "usdjpy": jpy, "usdbrl": brl}
