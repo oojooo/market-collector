@@ -15,11 +15,22 @@ PAGES = {
 }
 
 
+# 페이지별 기사 주소 형식 — 이런 링크가 8개 이상 보여야 목록을 제대로 읽은 것으로 본다
+PAGE_OK = {
+    "tokenpost_briefing": r"https://www\.tokenpost\.kr/[^)\s]*\d{4,}",
+    "tokenpost_latest": r"https://www\.tokenpost\.kr/[^)\s]*\d{4,}",
+    "fsc_press": r"https://www\.fsc\.go\.kr/no010101/\d+[^)\s]*",
+}
+
+
 def pages():
+    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감)."""
     out = {}
-    for k, u in PAGES.items():
-        out[k] = {"url": u, "excerpt": util.firecrawl(u, 5000)}
-    return {"status": "ok", "source": "토큰포스트 목록·금융위 보도자료 목록(Firecrawl)", "pages": out}
+    with util.browser() as page:
+        for k, u in PAGES.items():
+            md, via = util.fetch_md(page, u, 5000, lambda md, k=k: util.link_count(md, PAGE_OK[k]) >= 8)
+            out[k] = {"url": u, "via": via, "excerpt": md}
+    return {"status": "ok", "source": "토큰포스트 목록·금융위 보도자료 목록(수집 경로는 페이지별 via)", "pages": out}
 
 
 def collect():
