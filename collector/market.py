@@ -29,7 +29,9 @@ DART_CORPS = [("00126380", "삼성전자"), ("00164779", "SK하이닉스"), ("00
 
 TE_PAGES = {
     "us30y": "https://tradingeconomics.com/united-states/30-year-bond-yield",
-    "us10y": "https://tradingeconomics.com/united-states/10-year-bond-yield",
+    # /united-states/10-year-bond-yield 는 금리 값 없이 관련 기사 목록만 내려옴 — 2026-11-20 점검에서
+    # 정식 주소(government-bond-yield)로 교체. 키 이름은 그대로 둔다.
+    "us10y": "https://tradingeconomics.com/united-states/government-bond-yield",
     "gold": "https://tradingeconomics.com/commodity/gold",
     "dxy": "https://tradingeconomics.com/united-states/currency",
     "usdkrw": "https://tradingeconomics.com/south-korea/currency",

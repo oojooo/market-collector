@@ -46,7 +46,21 @@ def show(node, path=""):
             show(v, f"{path}[{i}]")
 
 
+def probe(url: str):
+    """주소 하나만 Firecrawl로 읽어(1크레딧) 길이·기준일 문장·앞부분을 로그에 찍는다. 저장하지 않는다."""
+    md = util.firecrawl(url, 9000)
+    ex = market._te_excerpt(md)
+    m = market._TE_DATE.search(md)
+    print(f"[probe] {url}: len={len(md)} 기준일문장={'있음' if m else '없음'}")
+    if m:
+        print("  문장: " + m.group(0).strip()[:400])
+    print("  앞부분: " + ex[:900].replace("\n", " ⏎ "))
+
+
 def main():
+    if os.environ.get("PROBE_URL"):
+        probe(os.environ["PROBE_URL"])
+        return
     force = os.environ.get("FORCE") == "1"
     dry = os.environ.get("DRY_RUN") == "1"
     jobs = {"market.json": market.collect, "digital.json": digital.collect, "retail.json": retail.collect}
