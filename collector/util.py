@@ -162,6 +162,8 @@ def fetch_md(page, url: str, max_chars: int, ok, **kw):
                 return md[:max_chars], "playwright"
             else:
                 why = f"내용 검증 실패(길이 {len(md)})"
+            if os.environ.get("DRY_RUN") == "1":  # 점검 실행에서는 무엇이 왔는지 보여 준다
+                print(f"  ! {url}: {why} | " + md[:400].replace("\n", " ⏎ "))
         except Exception as e:  # noqa: BLE001
             why = type(e).__name__
     try:
