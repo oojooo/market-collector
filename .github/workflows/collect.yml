@@ -8,7 +8,16 @@ on:
     - cron: "27 22 * * *"   # 07:27 KST
     - cron: "47 22 * * *"   # 07:47 KST
     - cron: "2 23 * * *"    # 08:02 KST — 08:25 브리핑 전 마지막 기회
-  workflow_dispatch: {}      # Actions 탭에서 수동 실행(테스트용)
+  workflow_dispatch:         # Actions 탭에서 수동 실행(테스트용). 아무것도 고르지 않으면 평소와 같은 수집.
+    inputs:
+      no_firecrawl:
+        description: "Firecrawl 예비 경로 끄기(크레딧을 쓰지 않음)"
+        type: boolean
+        default: false
+      dry_run:
+        description: "저장·커밋 없이 점검만(페이지별 수집 경로를 로그에 표시)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,6 +51,8 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           # 수동 실행은 오늘자 수집본이 있어도 강제 재수집
           FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          NO_FIRECRAWL: ${{ inputs.no_firecrawl && '1' || '0' }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
         run: python -m collector.main
 
       - name: Commit data

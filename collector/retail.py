@@ -13,11 +13,19 @@ PAGES = {
 }
 
 
+# 페이지별 기사 주소 형식 — 이런 링크가 8개 이상 보여야 목록을 제대로 읽은 것으로 본다
+PAGE_OK = {
+    "hankyung_finance_1212": r"https://www\.hankyung\.com/article/\w+",
+    "hankyung_finance_1213": r"https://www\.hankyung\.com/article/\w+",
+    "joongang_money": r"https://www\.joongang\.co\.kr/article/\d+",
+}
+
+
 def pages():
-    out = {}
-    for k, u in PAGES.items():
-        out[k] = {"url": u, "excerpt": util.firecrawl(u, 5000)}
-    return {"status": "ok", "source": "한경·중앙 섹션 목록(Firecrawl)", "pages": out}
+    """2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감).
+    한 곳이 안 열려도 나머지는 싣는다(안 열린 곳은 excerpt가 비고 page_errors에 사유가 남는다)."""
+    res = util.fetch_pages(PAGES, PAGE_OK)
+    return {"status": "ok", "source": "한경·중앙 섹션 목록(수집 경로는 페이지별 via)", **res}
 
 
 def collect():

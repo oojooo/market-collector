@@ -2,8 +2,9 @@
 
 소스 맵(기존 맥북 MCP 체계를 그대로 이식):
   FRED API(미 지수·금리 공식치) · ECOS(국고채·회사채·CD) · KRX 공공데이터포털(지수·관심 3사)
-  · OpenDART(관심 3사 공시) · TradingEconomics 7페이지(Firecrawl, 당일 호가·재정환율)
-  · 네이버페이 증권 리서치 목록+상세(Firecrawl) · 한경 컨센서스·종목페이지(Playwright, 로그인 불필요 영역만)
+  · OpenDART(관심 3사 공시) · TradingEconomics 7페이지(당일 호가·재정환율)
+  · 네이버페이 증권 리서치 목록+상세 · 한경 컨센서스·종목페이지(Playwright, 로그인 불필요 영역만)
+  TE·네이버는 2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감).
 뉴스(마감 기사·정산가·하우스 코멘트)는 브리핑 예약 작업이 WebSearch/WebFetch로 직접 수행.
 """
 import datetime
@@ -178,21 +179,63 @@ def dart():
     return {"status": "ok", "source": "DART(OpenDART)", "bgn_de": bgn, "disclosures": out}
 
 
+_MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
+# TE 본문의 기준일 문장: "... eased to 5.42% on November 18, 2026 ..." / "... rose to 103.8 on Wednesday ..."
+_TE_DATE = re.compile(r"[^\n]*\bon (?:(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day\b|(?:" + _MONTHS + r") \d{1,2})[^\n]*")
+# 환율 페이지 값이 이 범위를 벗어나면 잘못 읽은 것으로 본다
+_TE_RANGE = {"usdkrw": (800, 3000), "usdjpy": (60, 400), "usdbrl": (2, 15)}
+
+
+def _te_first_rate(txt):
+    """TE 페이지 상단의 'Exchange Rate' 바로 뒤 숫자(당일 호가)."""
+    m = re.search(r"(?:Exchange Rate|Actual)[\s|]+([\d,]+\.?\d*)", txt or "")
+    try:
+        return float(m.group(1).replace(",", "")) if m else None
+    except ValueError:
+        return None
+
+
+def _te_ok(key):
+    """브라우저로 읽은 TE 글이 쓸 만한지 판정하는 함수를 만든다."""
+    def ok(md):
+        if len(md) < 400:
+            return False
+        if key in _TE_RANGE:
+            v, (lo, hi) = _te_first_rate(md), _TE_RANGE[key]
+            return v is not None and lo <= v <= hi
+        return bool(_TE_DATE.search(md))  # 금리·금·DXY는 기준일 문장이 있어야 함
+    return ok
+
+
+def _te_excerpt(md: str, n: int = 2600) -> str:
+    """페이지 제목부터 앞부분 + 기준일이 적힌 문장(최대 3개)을 모아 n자 안으로 줄인다.
+    (앞부분만 자르면 'to X% on <date>' 문장이 잘려 나가는 일이 있었음 — 2026-11-19 us10y)"""
+    i = md.find("# ")
+    body = md[i:] if i >= 0 else md
+    head = body[:1500]
+    sents = []
+    for m in _TE_DATE.finditer(body):
+        sent = m.group(0).strip()[:600]
+        if sent[:80] not in head and sent not in sents:
+            sents.append(sent)
+        if len(sents) == 3:
+            break
+    return (head + ("\n\n" + "\n\n".join(sents) if sents else ""))[:n]
+
+
 def te():
-    pages = {}
-    for k, u in TE_PAGES.items():
-        pages[k] = {"url": u, "excerpt": util.firecrawl(u, 2600)}
+    pages, rate = {}, {}
+    with util.browser() as page:
+        for k, u in TE_PAGES.items():
+            md, via = util.fetch_md(page, u, 9000, _te_ok(k), wait_ms=3000)
+            pages[k] = {"url": u, "via": via, "excerpt": _te_excerpt(md)}
+            rate[k] = _te_first_rate(md)  # 줄이기 전 글에서 읽는다
+            if via != "playwright":
+                # TE는 GitHub 서버의 브라우저 접속을 403으로 막는다(2026-11-19 점검). 첫 페이지가 막히면
+                # 나머지는 브라우저를 다시 시도하지 않고 바로 Firecrawl로 읽는다(막힘이 풀리면 자동으로 브라우저 경로).
+                page = None
 
-    def first_rate(txt):
-        m = re.search(r"(?:Exchange Rate|Actual)\s*\n+\s*([\d,]+\.?\d*)", txt or "")
-        try:
-            return float(m.group(1).replace(",", "")) if m else None
-        except ValueError:
-            return None
-
-    krw = first_rate(pages["usdkrw"]["excerpt"])
-    jpy = first_rate(pages["usdjpy"]["excerpt"])
-    brl = first_rate(pages["usdbrl"]["excerpt"])
+    krw, jpy, brl = rate["usdkrw"], rate["usdjpy"], rate["usdbrl"]
     cross = {"usdkrw": krw, "usdjpy": jpy, "usdbrl": brl}
     if krw and jpy:
         cross["krw_per_100jpy"] = round(krw / jpy * 100, 1)
@@ -200,7 +243,7 @@ def te():
         cross["krw_per_brl"] = round(krw / brl, 1)
     return {
         "status": "ok",
-        "source": "TradingEconomics(역외 호가 — 기준일은 각 excerpt 본문의 'on <date>'로 확인)",
+        "source": "TradingEconomics(역외 호가 — 기준일은 각 excerpt 본문의 'on <date>'로 확인). 수집 경로는 페이지별 via",
         "pages": pages,
         "cross_calc_note": "원/엔(100엔당)=USDKRW÷USDJPY×100 · 원/헤알=USDKRW÷USDBRL — 'TE 국가별 페이지 재정환율(역외 호가)'로 표기",
         "cross_calc": cross,
@@ -208,7 +251,7 @@ def te():
 
 
 # 네이버 리서치 목록의 한 줄: "- [업종**제목** TODAY증권사2026.11.13.조회 123](상세 주소)"
-_NV_ITEM = re.compile(r"\[([^\]\n]*?)\*\*(.+?)\*\*([^\]\n]*?)\]\((https://m\.stock\.naver\.com/investment/research/\w+/\d+)\)")
+_NV_ITEM = re.compile(r"\[([^\]\n]*?)\*\*(.+?)\*\*([^\]\n]*?)\]\((https://m\.stock\.naver\.com/investment/research/\w+/\d+)[^)\s]*\)")
 
 # 분야별로 상세를 몇 건 읽을지, 어떤 제목을 먼저 고를지(prefer), 어떤 제목은 빼는지(skip)
 _NV_PICK = {
@@ -259,23 +302,44 @@ def _pick_details(lists: dict):
     return picks
 
 
+_NV_LINK = 'a[href*="/investment/research/"]'
+
+
 def naver_research():
-    lists = {}
-    for k, u in NAVER_LISTS.items():
-        lists[k] = util.firecrawl(u, 6500)
-    details = []
-    for it in _pick_details(lists):  # 데일리 2 · 투자전략 2 · 산업(반도체 우선) 3 · 경제 1 = 최대 8건
-        md = util.firecrawl(it["url"], 6000)
-        pdf = None
-        m = re.search(r"https%3A%2F%2Fstock\.pstatic\.net[^)\"&\s]+?\.pdf", md)
-        if m:
-            pdf = unquote(m.group(0))
-        details.append({"category": it["category"], "sector": it["sector"], "title": it["title"], "url": it["url"], "pdf": pdf, "excerpt": md})
+    lists, via, details, skipped = {}, {}, [], []
+    with util.browser() as page:
+        for k, u in NAVER_LISTS.items():
+            # 목록에서 리포트 5건 이상을 알아볼 수 있어야 제대로 읽은 것
+            lists[k], via[k] = util.fetch_md(
+                page, u, 6500, lambda md: len(_naver_items(md)) >= 5, wait_selector=_NV_LINK
+            )
+        for it in _pick_details(lists):  # 데일리 2 · 투자전략 2 · 산업(반도체 우선) 3 · 경제 1 = 최대 8건
+            head = it["title"][:12]
+            try:
+                md, v = util.fetch_md(
+                    page, it["url"], 6000,
+                    lambda md, head=head: len(md) >= 300 and (head in md or "원문 보기" in md),
+                    wait_selector='a[href*="pstatic.net"], a[href*="/pdf?"]',
+                )
+            except Exception as e:  # noqa: BLE001
+                # 상세 한 건이 안 열려도 나머지는 살린다
+                skipped.append(f"{it['title'][:30]}: {util.scrub(str(e))[:120]}")
+                continue
+            pdf = None
+            m = re.search(r"https%3A%2F%2Fstock\.pstatic\.net[^)\"&\s]+?\.pdf", md)
+            if m:
+                pdf = unquote(m.group(0))
+            details.append({
+                "category": it["category"], "sector": it["sector"], "title": it["title"],
+                "url": it["url"], "pdf": pdf, "via": v, "excerpt": md,
+            })
     return {
         "status": "ok",
-        "source": "네이버페이 증권 리서치(Firecrawl) — 목록 날짜가 전일이면 캐시 구식으로 간주",
+        "source": "네이버페이 증권 리서치 — 목록 날짜가 전일이면 캐시 구식으로 간주. 수집 경로는 lists_via·details[].via",
         "lists": lists,
+        "lists_via": via,
         "details": details,
+        "details_skipped": skipped,
     }
 
 

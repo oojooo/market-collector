@@ -6,8 +6,9 @@
 맥북 전원과 무관하게 돌아가는 것이 목적입니다.
 
 수집 범위: FRED(미 지수·금리) · 한국은행 ECOS(국고채·회사채·CD) · KRX 공공데이터포털(지수·관심 3사)
-· OpenDART(관심 3사 공시) · TradingEconomics 7페이지(당일 호가·재정환율, Firecrawl)
-· 네이버페이 증권 리서치 목록+상세(Firecrawl) · 한경 컨센서스·종목페이지(Playwright, 로그인 불필요 영역).
+· OpenDART(관심 3사 공시) · TradingEconomics 7페이지(당일 호가·재정환율, Firecrawl — 사이트가 직접 접속을 막음)
+· 네이버페이 증권 리서치 목록+상세(Playwright) · 한경 컨센서스·종목페이지(Playwright, 로그인 불필요 영역).
+· 2026-11-19부터 모든 페이지를 브라우저(Playwright)로 먼저 읽고, 읽지 못한 페이지만 Firecrawl로 읽습니다.
 뉴스(마감 기사·정산가·하우스 코멘트·진원지 심층)는 지금처럼 브리핑 작업의 WebSearch가 담당합니다.
 연합뉴스·매일경제·조선비즈 등 Claude 웹 도구 차단 도메인은 이 수집기로도 수집하지 않습니다(우회 금지 원칙).
 
@@ -61,7 +62,12 @@
 ---
 
 ## 운영 메모
-- **비용**: GitHub Actions 무료 한도 내(일 ~8분). Firecrawl은 하루 약 20~25크레딧(월 ~700) 소모.
+- **비용**: GitHub Actions 무료 한도 내(일 ~8분). Firecrawl은 하루 약 7크레딧(월 ~210) — TradingEconomics 7페이지만.
+  2026-11-19 이전에는 하루 20~25크레딧(월 ~700)이었고, 네이버 리서치·한경·중앙·토큰포스트·금융위 목록을
+  브라우저 직접 수집으로 바꿔 줄였습니다. 각 JSON의 `meta.firecrawl_calls`에 그날 쓴 크레딧 수가 남습니다.
+- **수집 경로 점검**: Actions 탭 → collect-daily-data → Run workflow에서 `dry_run`을 켜면 저장 없이
+  페이지별 수집 경로(via=playwright/firecrawl)를 로그에 보여 줍니다. `no_firecrawl`을 켜면 Firecrawl을 쓰지 않습니다
+  (크레딧이 바닥난 기간에는 이 옵션으로 수동 실행 — TE 섹션만 "미확보"가 됩니다).
 - **신선도 판정**: 각 JSON의 `meta.date_kst`·`meta.collected_at_kst`로 브리핑 작업이 오늘자인지 확인하고,
   아니면 간이판(직접 수집)으로 동작합니다. `meta.errors`에 실패 섹션이 기록되고 해당 값은 "미확보" 처리됩니다.
 - **스케줄 지연**: GitHub 크론은 혼잡 시 10~20분 밀릴 수 있어 07:30 + 07:50 이중 크론으로 보완합니다.
