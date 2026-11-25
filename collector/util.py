@@ -36,6 +36,7 @@ def get_json(url, params=None, timeout=30):
 _last_fc = 0.0
 FC_CALLS = 0      # 이번 실행에서 Firecrawl을 부른 횟수(1회 = 1크레딧)
 _fc_reported = 0  # finalize()가 이미 meta에 적은 횟수
+_fc_dead = ""     # 크레딧 소진·키 오류가 한 번 확인되면 사유를 적어 두고, 이번 실행에서는 더 부르지 않는다
 
 
 def firecrawl_enabled() -> bool:
@@ -46,9 +47,12 @@ def firecrawl_enabled() -> bool:
 def firecrawl(url: str, max_chars: int = 4000, _retry: bool = True) -> str:
     """Firecrawl scrape API. 분당 한도를 고려해 호출 간 최소 6초 간격, 429면 25초 후 1회 재시도.
     2026-11-19부터는 예비 경로 — 평소에는 fetch_md()가 브라우저로 먼저 읽고, 실패한 페이지만 여기로 온다."""
-    global _last_fc, FC_CALLS
+    global _last_fc, FC_CALLS, _fc_dead
     if not firecrawl_enabled():
         raise RuntimeError("Firecrawl 미사용(NO_FIRECRAWL=1 또는 키 없음)")
+    if _fc_dead:
+        # 2026-11-25 추가: 크레딧이 바닥난 날 페이지마다 6초씩 기다리며 같은 거절을 다시 받지 않도록 한다
+        raise RuntimeError(f"Firecrawl {_fc_dead} — 이번 실행에서는 다시 부르지 않음")
     key = os.environ["FIRECRAWL_API_KEY"]
     wait = 6 - (time.time() - _last_fc)
     if wait > 0:
@@ -66,6 +70,10 @@ def firecrawl(url: str, max_chars: int = 4000, _retry: bool = True) -> str:
     if r.status_code == 429 and _retry:
         time.sleep(25)
         return firecrawl(url, max_chars, _retry=False)
+    if r.status_code in (401, 402):
+        # 401 = 키 오류, 402 = 크레딧 소진. 크레딧이 나가지 않은 호출이므로 횟수에서 빼고, 남은 페이지는 부르지 않는다.
+        FC_CALLS -= 1
+        _fc_dead = "크레딧 소진(402)" if r.status_code == 402 else "키 오류(401)"
     r.raise_for_status()
     md = (r.json().get("data") or {}).get("markdown") or ""
     return md[:max_chars]

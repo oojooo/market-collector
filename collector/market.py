@@ -229,16 +229,31 @@ def _te_excerpt(md: str, n: int = 2600) -> str:
 
 
 def te():
-    pages, rate = {}, {}
+    """TE 8페이지를 페이지별로 읽는다. 한 페이지가 안 읽혀도 나머지는 살린다(2026-11-25 변경).
+    이전에는 한 페이지만 실패해도 섹션 전체가 "미확보"가 됐다 — 2026-11-24에 Firecrawl 크레딧이
+    5번째 페이지에서 바닥나, 이미 읽은 4페이지(4크레딧)까지 버려진 사례.
+    실패한 페이지는 excerpt를 비우고 error를 적으며, 이름을 page_errors에 모은다.
+    전부 실패했을 때만 섹션을 "미확보"로 돌린다."""
+    pages, rate, failed = {}, {}, []
     with util.browser() as page:
         for k, u in TE_PAGES.items():
-            md, via = util.fetch_md(page, u, 9000, _te_ok(k), wait_ms=3000)
+            try:
+                md, via = util.fetch_md(page, u, 9000, _te_ok(k), wait_ms=3000)
+            except Exception as e:  # noqa: BLE001
+                msg = util.scrub(f"{type(e).__name__}: {e}")[:200]
+                failed.append(f"{k}: {msg}")
+                pages[k] = {"url": u, "via": None, "excerpt": "", "error": msg}
+                rate[k] = None
+                page = None  # 직접 읽기가 막힌 것이므로 남은 페이지는 브라우저를 다시 시도하지 않는다
+                continue
             pages[k] = {"url": u, "via": via, "excerpt": _te_excerpt(md)}
             rate[k] = _te_first_rate(md)  # 줄이기 전 글에서 읽는다
             if via != "playwright":
                 # TE는 GitHub 서버의 브라우저 접속을 403으로 막는다(2026-11-19 점검). 첫 페이지가 막히면
                 # 나머지는 브라우저를 다시 시도하지 않고 바로 Firecrawl로 읽는다(막힘이 풀리면 자동으로 브라우저 경로).
                 page = None
+    if len(failed) == len(TE_PAGES):
+        raise RuntimeError("TE 페이지를 하나도 읽지 못함 — " + failed[0][:240])
 
     krw, jpy, brl = rate["usdkrw"], rate["usdjpy"], rate["usdbrl"]
     cross = {"usdkrw": krw, "usdjpy": jpy, "usdbrl": brl}
@@ -248,8 +263,12 @@ def te():
         cross["krw_per_brl"] = round(krw / brl, 1)
     return {
         "status": "ok",
-        "source": "TradingEconomics(역외 호가 — 기준일은 각 excerpt 본문의 'on <date>'로 확인). 수집 경로는 페이지별 via",
+        "source": "TradingEconomics(역외 호가 — 기준일은 각 excerpt 본문의 'on <date>'로 확인). 수집 경로는 페이지별 via"
+        + (f" · 일부 페이지 미확보({len(failed)}/{len(TE_PAGES)}) — page_errors 참조" if failed else ""),
         "pages": pages,
+        # 읽지 못한 페이지 목록("이름: 사유"). 비어 있으면 8페이지 모두 읽은 것.
+        # 여기에 이름이 있는 페이지는 excerpt가 비어 있고, 환율 페이지면 cross_calc의 해당 값도 null이다.
+        "page_errors": failed,
         "cross_calc_note": "원/엔(100엔당)=USDKRW÷USDJPY×100 · 원/헤알=USDKRW÷USDBRL — 'TE 국가별 페이지 재정환율(역외 호가)'로 표기",
         "cross_calc": cross,
     }
