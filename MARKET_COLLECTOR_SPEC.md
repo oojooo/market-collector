@@ -46,7 +46,7 @@ GitHub에서는 반드시 `.github/workflows/collect.yml` 경로에 넣는다.
 - `collector/util.py` — KST 시간, HTTP, Firecrawl(6초 간격·429 시 25초 후 1회 재시도), 섹션 래퍼(실패="미확보"), meta 생성
 - `collector/market.py` — **market.json**: FRED API 9시리즈 · ECOS 817Y002 5종(국고3/10/30y·회사채AA-·CD91)
   · KRX 공공데이터포털(코스피·코스닥 + 005930/000660/042700) · OpenDART 3사(직전 거래일, 월→금)
-  · TE 7페이지(Firecrawl — us10y/us30y/gold/dxy/usdkrw/usdjpy/usdbrl + 재정환율 자동 산출:
+  · TE 8페이지(Firecrawl — us2y/us10y/us30y/gold/dxy/usdkrw/usdjpy/usdbrl, us2y는 2026-11-25 추가 + 재정환율 자동 산출:
   원/엔=USDKRW÷USDJPY×100, 원/헤알=USDKRW÷USDBRL) · 네이버 리서치 목록 4 + 상세 상위 6건(PDF URL 추출)
   · 한경 컨센서스·종목페이지 3(Playwright, 로그인 불필요 영역만)
 - `collector/digital.py` — **digital.json**(보조): 토큰포스트 브리핑·최신 목록, 금융위 보도자료 목록
@@ -66,7 +66,7 @@ GitHub에서는 반드시 `.github/workflows/collect.yml` 경로에 넣는다.
   해당 매체는 맥북 Chrome이 연결된 날에만. 한경 로그인 전용 리포트 PDF 원문도 미수집(목록·목표가·기사 교차로 대체)
 - 뉴스(마감 기사·정산가·하우스 코멘트·진원지 심층)는 계속 브리핑 작업의 WebSearch가 담당 — JSON은 정형 수치 담당
 - 품질 구조: 평상시=현 PC판 수준, 수집 실패일=현 Cloud 간이판 수준(JSON이 오늘자가 아니면 직접 수집으로 폴백)
-- Firecrawl 소모 ~월 210크레딧(2026-11-19 브라우저 우선 수집으로 전환, 이전 ~700 — TE 7페이지만 Firecrawl) · Bigdata.com은 크레딧 소진으로 미사용
+- Firecrawl 소모 ~월 240크레딧(2026-11-19 브라우저 우선 수집으로 전환, 이전 ~700 — TE 8페이지만 Firecrawl, 2026-11-25 미 2년물 추가로 7→8) · Bigdata.com은 크레딧 소진으로 미사용
 
 ## 4. 남은 단계 (이 순서대로)
 

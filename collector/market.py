@@ -2,7 +2,7 @@
 
 소스 맵(기존 맥북 MCP 체계를 그대로 이식):
   FRED API(미 지수·금리 공식치) · ECOS(국고채·회사채·CD) · KRX 공공데이터포털(지수·관심 3사)
-  · OpenDART(관심 3사 공시) · TradingEconomics 7페이지(당일 호가·재정환율)
+  · OpenDART(관심 3사 공시) · TradingEconomics 8페이지(당일 호가·재정환율)
   · 네이버페이 증권 리서치 목록+상세 · 한경 컨센서스·종목페이지(Playwright, 로그인 불필요 영역만)
   TE·네이버는 2026-11-19부터 브라우저(Playwright)로 먼저 읽고, 실패한 페이지만 Firecrawl로 읽는다(크레딧 절감).
 뉴스(마감 기사·정산가·하우스 코멘트)는 브리핑 예약 작업이 WebSearch/WebFetch로 직접 수행.
@@ -32,6 +32,9 @@ TE_PAGES = {
     # /united-states/10-year-bond-yield 는 금리 값 없이 관련 기사 목록만 내려옴 — 2026-11-20 점검에서
     # 정식 주소(government-bond-yield)로 교체. 키 이름은 그대로 둔다.
     "us10y": "https://tradingeconomics.com/united-states/government-bond-yield",
+    # 미 2년물 — 2026-11-25 추가(브리핑의 미국 국채 카드가 2·10·30년 + 장단기 스프레드로 바뀜).
+    # us10y·us30y와 같은 틀의 페이지라 excerpt에 Actual 값과 "to X% on <date>" 문장이 함께 들어온다.
+    "us2y": "https://tradingeconomics.com/united-states/2-year-note-yield",
     "gold": "https://tradingeconomics.com/commodity/gold",
     "dxy": "https://tradingeconomics.com/united-states/currency",
     "usdkrw": "https://tradingeconomics.com/south-korea/currency",
