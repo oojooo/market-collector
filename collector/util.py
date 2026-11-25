@@ -60,7 +60,7 @@ def firecrawl(url: str, max_chars: int = 4000, _retry: bool = True) -> str:
     _last_fc = time.time()
     FC_CALLS += 1
     r = requests.post(
-        "https://api.firecrawl.dev/v1/scrape",
+        "https://api.firecrawl.dev/v2/scrape",
         headers={"Authorization": f"Bearer {key}"},
         # maxAge 0 = 캐시를 쓰지 않고 지금 페이지를 새로 긁는다.
         # (기본값은 최대 2일 전 캐시를 돌려줘서 11-13 낮 수집에 11-12 목록이 들어온 사례가 있었음)
